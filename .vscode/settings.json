@@ -1,0 +1,6 @@
+{
+  "markdown.marp.themes": [
+    "./themes/ml-forecast.css"
+  ],
+  "markdown.marp.enableHtml": true
+}
