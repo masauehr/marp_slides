@@ -1,0 +1,141 @@
+/* @theme ml-forecast */
+@import 'default';
+
+:root {
+  --color-bg:      #ffffff;
+  --color-fg:      #1a1a2e;
+  --color-accent:  #2563eb;
+  --color-sub:     #64748b;
+  --color-muted:   #f1f5f9;
+  --color-border:  #e2e8f0;
+  --font-sans:     'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-mono:     'SFMono-Regular', Consolas, 'Courier New', monospace;
+}
+
+/* ベーススライド */
+section {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 20px;
+  padding: 48px 56px;
+}
+
+/* 見出し */
+h1 {
+  color: var(--color-accent);
+  font-size: 2em;
+  font-weight: 700;
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6em;
+}
+
+h2 {
+  color: var(--color-fg);
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  color: var(--color-sub);
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+/* 表 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 0.8em 0;
+}
+
+th {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 6px 12px;
+  text-align: left;
+}
+
+td {
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+tr:nth-child(even) td {
+  background: var(--color-muted);
+}
+
+/* コードブロック */
+code {
+  font-family: var(--font-mono);
+  background: var(--color-muted);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 0.8em;
+  overflow: auto;
+}
+
+/* リスト */
+ul, ol {
+  padding-left: 1.4em;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: 0.2em;
+}
+
+/* 引用（ポイントボックス風） */
+blockquote {
+  background: #eff6ff;
+  border-left: 4px solid var(--color-accent);
+  padding: 10px 16px;
+  margin: 0.8em 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95em;
+  color: var(--color-fg);
+}
+
+blockquote p { margin: 0; }
+
+/* ページ番号 */
+section::after {
+  font-size: 0.65em;
+  color: var(--color-sub);
+}
+
+/* 強調テキスト */
+strong { color: var(--color-accent); }
+
+em {
+  color: #dc2626;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* 2カラムレイアウト用 */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ダーク背景スライド用（_backgroundColor で背景色を設定した際に文字色を合わせる） */
+section[data-marpit-advanced-background] h1,
+section[style*="background-color: #1e3a8a"] h1,
+section[style*="background-color: #2563eb"] h1 {
+  color: #ffffff;
+  border-bottom-color: rgba(255,255,255,0.3);
+}
