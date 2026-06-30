@@ -1,6 +1,7 @@
 # marp_slides — Markdown → スライド自動生成
 
-> 詳しくは [MANUAL.md](MANUAL.md) を参照
+> 詳しくは [MANUAL.md](MANUAL.md) を参照  
+> VS Code + Marp だけで使う場合は [VSCODE-MARP.md](VSCODE-MARP.md) を参照
 
 Marp を使って Markdown ファイルから PPTX・PDF・HTML を生成するプロジェクト。  
 **Claude Code と組み合わせることで、資料の構成・作成・変換をすべて自動化できる。**
@@ -29,7 +30,27 @@ marp_slides/
 
 ---
 
-## クイックスタート
+## 使い方のパターン
+
+| パターン | 向いている場面 | 参照先 |
+|---------|--------------|--------|
+| VS Code + Marp 拡張のみ | CLI 不要・手軽に変換したい | [VSCODE-MARP.md](VSCODE-MARP.md) |
+| Marp CLI（npx） | ローカル画像を確実に埋め込みたい・自動化したい | [MANUAL.md](MANUAL.md) |
+| Claude Code と連携 | 構成・執筆・変換を一括自動化したい | [MANUAL.md](MANUAL.md) |
+
+### VS Code + Marp 拡張だけで使う場合
+
+CLI インストール不要。VS Code に [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) 拡張を入れるだけで使い始められる。
+
+- **エクスポート**: `Cmd+Shift+P` → `Marp: Export Slide Deck` で PDF / PPTX を生成
+- **カスタムテーマ**: `.vscode/settings.json` に登録済み（`ml-forecast.css` がすぐ使える）
+- **スニペット**: `marp` / `marpsec` / `marpend` を入力して `Tab` でテンプレート展開
+
+詳細手順 → [VSCODE-MARP.md](VSCODE-MARP.md)
+
+---
+
+## クイックスタート（CLI）
 
 ### パターン A: 汎用テンプレートから作る
 
@@ -178,3 +199,4 @@ YYYY-MM-DD-プロジェクト名.md
 | 2026-06-30 | `templates/readme-to-slides.md` を追加。README → スライド変換テンプレートとして整備 |
 | 2026-06-30 | `slides/2026-06-30-ml-forecast.md` を作成（README を20スライドに再設計・PDF/PPTX 変換済み） |
 | 2026-06-30 | ファイル命名規則を `YYYY-MM-DD-` 形式に統一。テンプレート使用手順を README に追加 |
+| 2026-06-30 | `VSCODE-MARP.md` を追加。VS Code + Marp 拡張だけでの PDF/PPTX 生成手順をまとめた |
