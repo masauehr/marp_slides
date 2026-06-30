@@ -10,3 +10,6 @@ npm-debug.log*
 # 環境設定
 .env
 .env.local
+
+# Office 一時ファイル
+~$*
