@@ -263,6 +263,42 @@ npx @marp-team/marp-cli slides/2026-06-ml-forecast.md \
 
 ---
 
+## PPTX の編集可否について（重要な制約）
+
+### Marp CLI の PPTX はテキスト編集ができない
+
+Marp CLI が生成する PPTX は、各スライドを Chromium でレンダリングした**スクリーンショット画像**を PowerPoint スライドの背景として貼り付ける方式で作られている。
+
+実際に PPTX を ZIP として展開し `ppt/slides/slide1.xml` を確認すると、テキストボックス等が入るはずの `<p:spTree>` が空で、代わりに `<p:bg>` に画像1枚（`blipFill`）が丸ごと埋め込まれているだけであることがわかる。
+
+```xml
+<p:sld ...>
+  <p:cSld>
+    <p:bg><p:bgPr><a:blipFill ...><a:blip r:embed="rId1"/></a:blipFill></p:bgPr></p:bg>
+    <p:spTree>...（空）...</p:spTree>
+  </p:cSld>
+</p:sld>
+```
+
+**理由**: Marp のテーマは自由な CSS（カスタムフォント・独自レイアウト・コードハイライト等）で組まれているため、それを PowerPoint のネイティブな図形・テキストボックスへ正確に変換するのは技術的に困難。Marp CLI は「見た目の再現」を優先し、スライド全体を画像化して焼き込む実装を採用している。
+
+**影響**:
+- PowerPoint で開いてもテキストは選択・編集できない（1枚の画像として扱われる）
+- レイアウト・文言・スタイルの変更ができない
+- 修正は元の `.md` を直して再変換する以外に方法がない
+
+### 編集可能な PPTX が必要な場合の代替ツール
+
+| ツール | テキスト編集可否 | デザイン自由度 | 備考 |
+|---|---|---|---|
+| **Marp CLI**（本プロジェクト） | ✕（画像焼き込み） | ◎（CSS自由） | 配布用の完成品向け。見た目を確実に再現できる |
+| **ppt_auto**（python-pptx） | ◎（本物のテキストボックス） | △（定型レイアウト） | [ppt_auto](../ppt_auto/) 参照。`python-pptx` が必要（AI解析版はさらに `ANTHROPIC_API_KEY` が必要） |
+| **Pandoc** | ◎（本物のテキストボックス） | △〜○（`--reference-doc` 次第） | `pandoc slides.md -o slides.pptx`。Marp独自記法（Front Matter・`<!-- _xxx -->` ディレクティブ）には対応しないため、pandoc用に記法を外した版を別途用意する必要がある |
+
+**使い分けの目安**: 「見た目重視・そのまま配布」なら Marp、「PowerPoint 上で文言・レイアウトを手直ししたい」なら ppt_auto か Pandoc を使う。
+
+---
+
 ## Claude Code でスライドを作成させる方法
 
 ### 基本的な頼み方
@@ -471,3 +507,4 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 | 2026-06-30 | マニュアル新規作成。ml_forecast/slides の実例をもとに整理 |
 | 2026-06-30 | 「画像の埋め込みについて」セクションを追加（PPTX/PDF への自動埋め込み・条件・欠落時の対処・別プロジェクト参照パス） |
 | 2026-06-30 | `templates/readme-to-slides.md` を追加。「README → スライド変換のテンプレート」セクションを追加 |
+| 2026-07-01 | 「PPTX の編集可否について（重要な制約）」セクションを追加。Marp CLI の PPTX がスライド全体を画像化して埋め込む方式（テキスト編集不可）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |

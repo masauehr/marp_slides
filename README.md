@@ -200,3 +200,4 @@ YYYY-MM-DD-プロジェクト名.md
 | 2026-06-30 | `slides/2026-06-30-ml-forecast.md` を作成（README を20スライドに再設計・PDF/PPTX 変換済み） |
 | 2026-06-30 | ファイル命名規則を `YYYY-MM-DD-` 形式に統一。テンプレート使用手順を README に追加 |
 | 2026-06-30 | `VSCODE-MARP.md` を追加。VS Code + Marp 拡張だけでの PDF/PPTX 生成手順をまとめた |
+| 2026-07-01 | MANUAL.md に「PPTX の編集可否について」を追加。Marp の PPTX がテキスト編集不可（画像焼き込み）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |
