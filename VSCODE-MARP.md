@@ -121,6 +121,24 @@ Cmd+Shift+P → Marp: Export Slide Deck
 
 > デフォルト形式は `markdown.marp.exportType` で設定した値になる。
 
+### 編集可能な PPTX を出力する（実験的機能）
+
+`markdown.marp.pptx.editable` 設定で、テキストボックス等を編集できる本物のPPTXを出力できる（CLI版の `--pptx-editable` と同等機能）。
+
+```json
+{
+  "markdown.marp.pptx.editable": "smart"
+}
+```
+
+| 値 | 内容 |
+|----|------|
+| `off`（デフォルト） | 非編集PPTX（画像埋め込み）。見た目の再現性・スピーカーノート対応を優先 |
+| `on` | 常に編集可能PPTXで出力。スライド内容によっては変換失敗やレイアウト崩れの可能性あり |
+| `smart` | 編集可能PPTXを試み、失敗時は非編集PPTXにフォールバック |
+
+> **事前準備**: 対応ブラウザに加えて **LibreOffice Impress** のインストールが必要（`brew install --cask libreoffice`）。CLI版と同じ制約（実験的機能、変換結果の再現性はLibreOfficeのバージョン依存）が当てはまる。
+
 ---
 
 ## 6. スライドに収まらない場合の対処

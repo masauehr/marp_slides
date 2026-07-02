@@ -318,12 +318,14 @@ npx @marp-team/marp-cli --pptx --pptx-editable \
 - 変換後は必ず PowerPoint で見た目を目視確認すること
 - 内容が多いスライド（表・コードブロックが多い等）は、Marp自体がその通りにレンダリングするため、そのまま変換すると1スライドに情報が詰まりすぎる場合がある。元のMarkdown側で内容を絞る・スライドを分けるといった調整は引き続き必要
 
+**VS Code拡張版でも利用可能**: `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable` として存在する（`off`/`on`/`smart`の3値、デフォルトは`off`）。`.vscode/settings.json` に追記して `Marp: Export Slide Deck` を実行するだけでよい。こちらもLibreOffice Impressのインストールが必要。詳細は [VSCODE-MARP.md](VSCODE-MARP.md) の「5. PDF / PPTX へのエクスポート」内「編集可能な PPTX を出力する」節を参照。
+
 ### 編集可能な PPTX が必要な場合の選択肢まとめ
 
 | 方法 | テキスト編集可否 | デザイン自由度 | 備考 |
 |---|---|---|---|
 | **Marp CLI `--pptx`**（通常） | ✕（画像焼き込み） | ◎（CSS自由） | 配布用の完成品向け。見た目を確実に再現できる |
-| **Marp CLI `--pptx-editable`**（実験的） | ◎（本物のテキストボックス） | ◎（Marpのテーマがそのまま反映される） | 要 LibreOffice。**Marpのテーマ・レイアウトを維持したまま編集可能にしたい場合はこれが第一候補** |
+| **Marp CLI `--pptx-editable`** / **VS Code拡張 `pptx.editable`**（実験的） | ◎（本物のテキストボックス） | ◎（Marpのテーマがそのまま反映される） | 要 LibreOffice。CLI版・VS Code拡張版どちらでも使える。**Marpのテーマ・レイアウトを維持したまま編集可能にしたい場合はこれが第一候補** |
 | **ppt_auto**（python-pptx） | ◎（本物のテキストボックス） | △（定型レイアウト） | [ppt_auto](../ppt_auto/) 参照。Marpのテーマは使わず、ppt_auto独自の定型デザインになる |
 | **Pandoc** | ◎（本物のテキストボックス） | △〜○（`--reference-doc` 次第） | `pandoc slides.md -o slides.pptx`。Marp独自記法（Front Matter・`<!-- _xxx -->` ディレクティブ）には対応しないため、pandoc用に記法を外した版を別途用意する必要がある |
 
@@ -544,3 +546,4 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 | 2026-06-30 | `templates/readme-to-slides.md` を追加。「README → スライド変換のテンプレート」セクションを追加 |
 | 2026-07-01 | 「PPTX の編集可否について（重要な制約）」セクションを追加。Marp CLI の PPTX がスライド全体を画像化して埋め込む方式（テキスト編集不可）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |
 | 2026-07-02 | Marp CLIに実験的機能 `--pptx-editable` があり、LibreOffice（要`brew install --cask libreoffice`）を使うことで本物の編集可能なテキストボックスを持つPPTXを生成できることを確認・追記。Marp用のFront Matterが無い生のREADME.mdでも変換できることを確認。比較表・使い分けの目安を更新（Marpのデザインを保ったまま編集したい場合の第一候補として案内） |
+| 2026-07-02 | `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable`（off/on/smart）として存在することを確認・追記。VSCODE-MARP.mdに設定手順を追加し、比較表の表記をCLI/VS Code拡張両対応に更新 |
