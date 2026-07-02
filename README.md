@@ -181,6 +181,23 @@ YYYY-MM-DD-プロジェクト名.md
 
 ---
 
+## PPTX の編集可否について
+
+通常の `--pptx` オプションで生成した PPTX は、スライド全体を画像として焼き込む方式のため **PowerPoint 上でテキスト編集ができない**。
+
+編集可能な PPTX が必要な場合は、実験的オプション **`--pptx-editable`**（要 `brew install --cask libreoffice`）を使うと、Marp のテーマを保ったまま本物のテキストボックスを持つ PPTX を生成できる。
+
+```bash
+npx @marp-team/marp-cli --pptx --pptx-editable \
+  -o output.pptx input.md --allow-local-files
+```
+
+VS Code 拡張版でも `.vscode/settings.json` の `markdown.marp.pptx.editable` で同等の機能が使える（詳細は [VSCODE-MARP.md](VSCODE-MARP.md)）。
+
+詳しい仕組み・制約・他ツール（ppt_auto / Pandoc）との比較は [MANUAL.md](MANUAL.md) の「PPTX の編集可否について（重要な制約）」を参照。
+
+---
+
 ## 関連プロジェクト
 
 | プロジェクト | 関係 |
@@ -201,3 +218,4 @@ YYYY-MM-DD-プロジェクト名.md
 | 2026-06-30 | ファイル命名規則を `YYYY-MM-DD-` 形式に統一。テンプレート使用手順を README に追加 |
 | 2026-06-30 | `VSCODE-MARP.md` を追加。VS Code + Marp 拡張だけでの PDF/PPTX 生成手順をまとめた |
 | 2026-07-01 | MANUAL.md に「PPTX の編集可否について」を追加。Marp の PPTX がテキスト編集不可（画像焼き込み）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |
+| 2026-07-02 | README.md に「PPTX の編集可否について」セクションを追加。実験的オプション `--pptx-editable`（要 LibreOffice）で編集可能な PPTX が生成できることを記載し、詳細は MANUAL.md を参照する形に整理 |
