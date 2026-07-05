@@ -68,18 +68,18 @@ paginate: true
 
 ---
 
-# 4気象モデルによる進路予測の比較
+# 5気象モデルによる進路予測の比較
 
-GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）・AIFS（ECMWF AI予測）による地上気圧予報を並列表示。
-例: 2026年6月19日00UTC初期値、156時間予報（6/25 21時JST時点）。
+GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）・AIFS・AIFS-ENS（ECMWF AI予測）による地上気圧予報を並列表示。
+例: FT=132h予報（7/10 9時JST時点）。
 
 <div style="text-align: center;">
 
-![w:1000](../images/typhoon_multi.png)
+![w:1150](../images/typhoon_multi070412.png)
 
 </div>
 
-> GSM を含む4モデル比較表示は独自開発。台風接近時の進路確認に活用している
+> GSM を含む5モデル比較表示は独自開発。台風接近時の進路確認に活用している
 
 ---
 
@@ -175,7 +175,7 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 
 # 現行モデル（v3 / v3b 並行稼働）
 
-<div class="cols">
+<div class="cols" style="grid-template-columns: 3fr 2fr;">
 <div>
 
 > **2026-06-07 より v3 移行・2026-06-23 より v3b 並行稼働**
@@ -184,7 +184,7 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 |------|-------------|--------------|
 | 説明変数 | GSR・GSR/平年比・SSD（3変数） | GSR・GSR/平年比（2変数） |
 | CV MAE | **2.08 kWh/日** | 2.22 kWh/日 |
-| モデルファイル | `rf_hatuden.joblib` | `rf_hatuden_no_ssd.joblib` |
+| ファイル | `rf_hatuden.joblib` | `rf_hatuden_no_ssd.joblib` |
 
 **並行稼働の理由**: SSD 予報が晴れ日に著しく過小評価（翌日予報 bias=−7.7h/day）されており、v3 の発電量予測を系統的に引き下げている可能性を検証中。
 
