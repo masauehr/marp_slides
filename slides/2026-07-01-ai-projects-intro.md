@@ -240,9 +240,13 @@ GitHub: https://github.com/masauehr/jma-mcp
 </div>
 <div style="text-align: center;">
 
-![w:520](../images/gsr.png)
+<span style="font-size: 0.8em; font-weight: 600; color: #2563eb;">GSR（全天日射量）の予測と実測の検証</span>
 
-![w:520](../images/sdd.png)
+![w:500](../images/gsr.png)
+
+<span style="font-size: 0.8em; font-weight: 600; color: #2563eb;">SSD（日照時間）の予測と実測の検証</span>
+
+![w:500](../images/sdd.png)
 
 </div>
 </div>
