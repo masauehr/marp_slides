@@ -131,9 +131,11 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 **→ 複数モデルを比較検討し、精度が最も高い Random Forest を現行モデルに採用**
 
 </div>
-<div>
+<div style="text-align: center;">
 
-<!-- TODO: 農研機構メッシュ農業気象データ(AMD)の紹介画像に差し替える -->
+![h:230](../images/nouken_menbunpu.png)
+
+![h:230](../images/GSR_nouken_20260705.png)
 
 </div>
 </div>
