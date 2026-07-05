@@ -46,8 +46,8 @@
   <text x="165" y="544" font-size="17" fill="#64748b">結果を見てまたチャットへ戻る</text>
 
   <!-- loop arrow left（中央ギャップ内、divider左側に収める） -->
-  <path d="M 730 522 C 766 522 766 156 730 156" fill="none" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed)"/>
-  <text x="748" y="345" font-size="15" fill="#dc2626" font-weight="600" transform="rotate(90 748 345)" text-anchor="middle">都度、人が確認・修正を仲介</text>
+  <path d="M 730 522 C 752 522 752 156 730 156" fill="none" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed)"/>
+  <text x="772" y="345" font-size="15" fill="#dc2626" font-weight="600" transform="rotate(90 772 345)" text-anchor="middle">都度、人が確認・修正を仲介</text>
 
   <!-- outcome box left -->
   <rect x="70" y="600" width="660" height="80" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,6"/>
@@ -96,8 +96,8 @@
   <text x="965" y="544" font-size="17" fill="#2563eb">一連の流れを人の介在少なく反復</text>
 
   <!-- loop arrow right（中央ギャップ内、divider右側に収める） -->
-  <path d="M 870 522 C 834 522 834 156 870 156" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/>
-  <text x="852" y="345" font-size="15" fill="#2563eb" font-weight="600" transform="rotate(90 852 345)" text-anchor="middle">エージェントが自律的に反復</text>
+  <path d="M 870 522 C 848 522 848 156 870 156" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="828" y="345" font-size="15" fill="#2563eb" font-weight="600" transform="rotate(90 828 345)" text-anchor="middle">エージェントが自律的に反復</text>
 
   <!-- outcome box right -->
   <rect x="870" y="600" width="660" height="80" rx="10" fill="#1e3a8a"/>
