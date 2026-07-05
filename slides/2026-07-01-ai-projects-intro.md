@@ -121,10 +121,34 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 
 ---
 
-# 予測値と実測値の日次検証
+# ml_forecast — 自宅太陽光発電量 機械学習予測
+
+<div class="cols">
+<div>
+
+農研機構AMD（メッシュ農業気象データ）のGSR・GSR/平年比・SSDを説明変数に、自宅の日別太陽光発電量（kWh）をRandom Forestで予測。
+
+🌐 https://uehr.net/ml_forecast/
+
+### 直近5日間の発電量予測（最終更新: 2026-07-05）
+
+| 日付 | GSR | 平年比 | SSD | 天気 | v3 | v3b |
+|---|---|---|---|---|---|---|
+| 07/05(日) | 30.4 | 1.48 | 7.3 | 晴れ | 18.4 | 19.3 |
+| 07/06(月) | 32.4 | 1.59 | 7.3 | 晴れ | 18.5 | 20.1 |
+| 07/07(火) | 24.1 | 1.18 | 5.5 | 晴れ | 16.8 | 18.2 |
+| 07/08(水) | 21.4 | 1.05 | 5.5 | 晴れ | 16.4 | 17.2 |
+| 07/09(木) | 22.3 | 1.10 | 5.5 | 晴れ | 16.8 | 18.1 |
+
+単位: GSR(MJ/m²)・SSD(h)・v3/v3b(kWh)　モデル: Random Forest v3（CV MAE=2.09 kWh/日）
+
+</div>
+<div style="text-align: center;">
 
 ![w:600](../../claude_writing/examples/images/forecast_vs_actual.png)
-![w:600](../../claude_writing/examples/images/monthly_avg_generation.png)
+
+</div>
+</div>
 
 > 精度評価は継続中。日次での予測・検証サイクルを運用している
 
