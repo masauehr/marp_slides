@@ -83,14 +83,22 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 
 # 気象レーダー・衛星画像表示アプリ
 
+<div class="cols">
+<div>
+
 - 公開されている実装を Claude Code に読み込ませ、機能単位に分割したアプリを開発
 - Web アプリ・iOS アプリ・Android アプリを実装（現時点では非公開）
 - 既存の実装を参考に AI で機能を移植・改修する開発手法を採用
 
-<!-- TODO: mobile_app のスクリーンショットを用意し次のように差し替える
-![w:600](../../mobile_app/screenshots/radar.png) -->
-
 公開URL: https://masauehr.github.io/iphone-weather-app/radar
+
+</div>
+<div style="text-align: center;">
+
+![h:480](../images/radar.png)
+
+</div>
+</div>
 
 ---
 
