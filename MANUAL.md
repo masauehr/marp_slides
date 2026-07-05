@@ -336,6 +336,84 @@ npx @marp-team/marp-cli --pptx --pptx-editable \
 
 ---
 
+## 高度なレイアウトテクニック（2カラム・画像配置・微調整）
+
+`slides/2026-07-01-ai-projects-intro.md` の作成・改修（2026-07-05）で確立した、`--pptx-editable` 前提の実用テクニック集。
+
+### レイアウト情報はどこに保存されるか（重要）
+
+PPTX/PDF のレイアウト調整は、**`.pptx` や `.pdf` ファイル自体には保存されない**。すべて元の `.md` ファイル内に、Markdown 本文＋生HTML＋インラインCSS（`style="..."` 属性）として記述されている。`.pptx`/`.pdf` は `.md` から**毎回ゼロから再生成されるビルド成果物**であり、それ自体はレイアウトの「ソース」ではない。
+
+つまり:
+- PowerPoint を開いて手動でテキストボックスの位置をドラッグ移動しても、その変更は `.pptx` ファイル内に留まり `.md` には反映されない
+- 次に `.md` から再変換すると、手動修正は跡形もなく上書きされる
+- レイアウトを恒久的に変えたいなら、**必ず `.md` 側を編集してから再変換する**
+
+### `--html` フラグが必要なケース
+
+Marp CLI はデフォルトで、生HTML中の `style` 属性など一部の属性をセキュリティ上サニタイズ（除去）する。中央寄せ（`<div style="text-align:center;">`）やグリッド比率の変更（`<div style="grid-template-columns:...">`）など、`style` 属性を効かせたい場合は変換コマンドに **`--html`** を付ける必要がある。
+
+```bash
+npx @marp-team/marp-cli slides/xxx.md \
+  --theme themes/xxx.css --html \
+  --pptx --pptx-editable -o slides/xxx.pptx --allow-local-files
+```
+
+付け忘れると、`style` 属性が丸ごと消えて中央寄せが効かず左詰めに戻る、比率指定が無視される等の症状が出る。
+
+### 2カラムレイアウトの比率調整
+
+`.cols` クラスはデフォルトで `1fr 1fr`（左右均等）だが、内容量に応じてインライン style で上書きできる。
+
+```markdown
+<div class="cols" style="grid-template-columns: 3fr 2fr;">
+<div>
+
+左カラム（表など横幅が必要な内容）
+
+</div>
+<div>
+
+右カラム（画像など）
+
+</div>
+</div>
+```
+
+表の列見出しが折り返して行の高さが不揃いになる場合、この比率調整（表がある側を広く）で解消できることが多い。
+
+### 画像位置の微調整（negative margin-top）
+
+画像を通常のフロー位置より上に詰めたい場合、右カラムの div に `margin-top` をマイナス値で指定する。見出し下の罫線に画像が食い込んで線が途切れることがあるが、実用上は許容範囲。
+
+```markdown
+<div style="text-align: center; margin-top: -70px;">
+
+![h:300](../images/example.png)
+
+</div>
+```
+
+### 複数画像の横並び配置（flexbox）
+
+Markdown の画像記法を複数行並べるだけだと縦積みになる。横一列に並べたい場合は生HTMLの `<img>` タグと flexbox を使う。
+
+```html
+<div style="display: flex; justify-content: center; gap: 10px;">
+<img src="../images/a.png" style="height: 150px; border-radius: 4px; object-fit: cover;">
+<img src="../images/b.png" style="height: 150px; border-radius: 4px; object-fit: cover;">
+<img src="../images/c.png" style="height: 150px; border-radius: 4px; object-fit: cover;">
+</div>
+```
+
+### 自作SVG図解を埋め込む
+
+アイコンや矢印を使ったオリジナルの比較図・フロー図は、`images/` 配下に SVG ファイルを作成し、通常の画像と同様に `![w:1100](../images/xxx.svg)` で埋め込める。Marp（Chromium）は SVG をそのままレンダリングするため、ラスター画像同様に `--pptx-editable` 変換時にも1枚の画像として埋め込まれる。
+
+**注意点（ループ矢印とラベルの重なり）**: ベジェ曲線の矢印に沿ってラベルテキストを配置する場合、曲線の頂点座標とラベルのX座標を十分離さないと、線がラベル文字を貫通して見た目が崩れる。3次ベジェの頂点は制御点そのものではなく `始点 + 0.75 × (制御点オフセット)` 程度になる点に注意し、ラベルはその頂点からさらに余白を空けて配置する。
+
+---
+
 ## Claude Code でスライドを作成させる方法
 
 ### 基本的な頼み方
@@ -547,3 +625,4 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 | 2026-07-01 | 「PPTX の編集可否について（重要な制約）」セクションを追加。Marp CLI の PPTX がスライド全体を画像化して埋め込む方式（テキスト編集不可）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |
 | 2026-07-02 | Marp CLIに実験的機能 `--pptx-editable` があり、LibreOffice（要`brew install --cask libreoffice`）を使うことで本物の編集可能なテキストボックスを持つPPTXを生成できることを確認・追記。Marp用のFront Matterが無い生のREADME.mdでも変換できることを確認。比較表・使い分けの目安を更新（Marpのデザインを保ったまま編集したい場合の第一候補として案内） |
 | 2026-07-02 | `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable`（off/on/smart）として存在することを確認・追記。VSCODE-MARP.mdに設定手順を追加し、比較表の表記をCLI/VS Code拡張両対応に更新 |
+| 2026-07-05 | 「高度なレイアウトテクニック（2カラム・画像配置・微調整）」セクションを追加。`slides/2026-07-01-ai-projects-intro.md` の作成・改修作業で確立した手法（レイアウト情報は`.md`のみに存在しPPTX/PDFはビルド成果物であること、`--html`フラグが必要なケース、`.cols`比率調整、negative margin-topでの画像位置調整、flexboxでの複数画像横並び、自作SVG図解の埋め込みと矢印・ラベル重なり回避）を記載 |
