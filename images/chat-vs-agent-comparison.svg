@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 780" font-family="'Hiragino Sans','Yu Gothic',Arial,sans-serif">
+  <rect x="0" y="0" width="1600" height="780" fill="#ffffff"/>
+
+  <!-- 中央区切り線 -->
+  <line x1="800" y1="10" x2="800" y2="770" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="6,6"/>
+
+  <!-- ===== 左カラム: チャットでコードを書かせる ===== -->
+  <rect x="40" y="16" width="720" height="64" rx="10" fill="#64748b"/>
+  <text x="400" y="57" text-anchor="middle" font-size="28" font-weight="700" fill="#ffffff">チャットでコードを書かせる</text>
+
+  <!-- Box1 -->
+  <rect x="70" y="112" width="660" height="88" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <circle cx="120" cy="156" r="26" fill="#64748b"/>
+  <text x="120" y="163" text-anchor="middle" font-size="20" fill="#ffffff">人</text>
+  <text x="165" y="150" font-size="22" font-weight="600" fill="#1a1a2e">質問・指示をチャットで入力</text>
+  <text x="165" y="178" font-size="17" fill="#64748b">「〇〇を作って」と都度依頼</text>
+
+  <!-- arrow 1 -->
+  <line x1="400" y1="200" x2="400" y2="234" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowGray)"/>
+
+  <!-- Box2 -->
+  <rect x="70" y="234" width="660" height="88" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <circle cx="120" cy="278" r="26" fill="#94a3b8"/>
+  <text x="120" y="285" text-anchor="middle" font-size="18" fill="#ffffff">AI</text>
+  <text x="165" y="272" font-size="22" font-weight="600" fill="#1a1a2e">コードをテキストで提案</text>
+  <text x="165" y="300" font-size="17" fill="#64748b">ファイルは自動更新されない</text>
+
+  <!-- arrow 2 -->
+  <line x1="400" y1="322" x2="400" y2="356" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowGray)"/>
+
+  <!-- Box3 -->
+  <rect x="70" y="356" width="660" height="88" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <circle cx="120" cy="400" r="26" fill="#64748b"/>
+  <text x="120" y="407" text-anchor="middle" font-size="20" fill="#ffffff">人</text>
+  <text x="165" y="394" font-size="22" font-weight="600" fill="#1a1a2e">コピー&amp;ペーストで反映</text>
+  <text x="165" y="422" font-size="17" fill="#64748b">手作業でファイルに貼り付け</text>
+
+  <!-- arrow 3 -->
+  <line x1="400" y1="444" x2="400" y2="478" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrowGray)"/>
+
+  <!-- Box4 -->
+  <rect x="70" y="478" width="660" height="88" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+  <circle cx="120" cy="522" r="26" fill="#64748b"/>
+  <text x="120" y="529" text-anchor="middle" font-size="20" fill="#ffffff">人</text>
+  <text x="165" y="516" font-size="22" font-weight="600" fill="#1a1a2e">実行して動作確認・修正依頼</text>
+  <text x="165" y="544" font-size="17" fill="#64748b">結果を見てまたチャットへ戻る</text>
+
+  <!-- loop arrow left（中央ギャップ内、divider左側に収める） -->
+  <path d="M 730 522 C 766 522 766 156 730 156" fill="none" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowRed)"/>
+  <text x="748" y="345" font-size="15" fill="#dc2626" font-weight="600" transform="rotate(90 748 345)" text-anchor="middle">都度、人が確認・修正を仲介</text>
+
+  <!-- outcome box left -->
+  <rect x="70" y="600" width="660" height="80" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,6"/>
+  <text x="400" y="637" text-anchor="middle" font-size="19" font-weight="700" fill="#64748b">一往復ごとに人手の作業が発生</text>
+  <text x="400" y="663" text-anchor="middle" font-size="16" fill="#64748b">試作・単発の作業には手軽で有効</text>
+
+  <!-- ===== 右カラム: Claude Code（AIエージェント） ===== -->
+  <rect x="840" y="16" width="720" height="64" rx="10" fill="#2563eb"/>
+  <text x="1200" y="57" text-anchor="middle" font-size="28" font-weight="700" fill="#ffffff">Claude Code（AIエージェント）</text>
+
+  <!-- Box1 -->
+  <rect x="870" y="112" width="660" height="88" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="920" cy="156" r="26" fill="#64748b"/>
+  <text x="920" y="163" text-anchor="middle" font-size="20" fill="#ffffff">人</text>
+  <text x="965" y="150" font-size="22" font-weight="600" fill="#1a1a2e">要件を指示</text>
+  <text x="965" y="178" font-size="17" fill="#2563eb">CLAUDE.md・plan.md に方針を蓄積</text>
+
+  <!-- arrow 1 -->
+  <line x1="1200" y1="200" x2="1200" y2="234" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/>
+
+  <!-- Box2 -->
+  <rect x="870" y="234" width="660" height="88" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="920" cy="278" r="26" fill="#2563eb"/>
+  <text x="920" y="284" text-anchor="middle" font-size="15" fill="#ffffff">Agent</text>
+  <text x="965" y="272" font-size="22" font-weight="600" fill="#1a1a2e">ファイルを直接編集</text>
+  <text x="965" y="300" font-size="17" fill="#2563eb">リポジトリを読み込み自律的に変更</text>
+
+  <!-- arrow 2 -->
+  <line x1="1200" y1="322" x2="1200" y2="356" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/>
+
+  <!-- Box3 -->
+  <rect x="870" y="356" width="660" height="88" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="920" cy="400" r="26" fill="#2563eb"/>
+  <text x="920" y="406" text-anchor="middle" font-size="15" fill="#ffffff">Agent</text>
+  <text x="965" y="394" font-size="22" font-weight="600" fill="#1a1a2e">テスト実行・動作確認</text>
+  <text x="965" y="422" font-size="17" fill="#2563eb">実行結果を見て自らコードを修正</text>
+
+  <!-- arrow 3 -->
+  <line x1="1200" y1="444" x2="1200" y2="478" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/>
+
+  <!-- Box4 -->
+  <rect x="870" y="478" width="660" height="88" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="920" cy="522" r="26" fill="#2563eb"/>
+  <text x="920" y="528" text-anchor="middle" font-size="15" fill="#ffffff">Agent</text>
+  <text x="965" y="516" font-size="22" font-weight="600" fill="#1a1a2e">commit → push → ドキュメント化</text>
+  <text x="965" y="544" font-size="17" fill="#2563eb">一連の流れを人の介在少なく反復</text>
+
+  <!-- loop arrow right（中央ギャップ内、divider右側に収める） -->
+  <path d="M 870 522 C 834 522 834 156 870 156" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="852" y="345" font-size="15" fill="#2563eb" font-weight="600" transform="rotate(90 852 345)" text-anchor="middle">エージェントが自律的に反復</text>
+
+  <!-- outcome box right -->
+  <rect x="870" y="600" width="660" height="80" rx="10" fill="#1e3a8a"/>
+  <text x="1200" y="637" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">人の介在を最小化し高速に反復</text>
+  <text x="1200" y="663" text-anchor="middle" font-size="16" fill="#dbeafe">半年間で34件のリポジトリを継続開発</text>
+
+  <defs>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+</svg>

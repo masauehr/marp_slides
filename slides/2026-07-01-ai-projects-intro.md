@@ -37,6 +37,12 @@ paginate: true
 
 ---
 
+# チャットでの開発 vs Claude Code（AIエージェント）
+
+![w:1100](../images/chat-vs-agent-comparison.svg)
+
+---
+
 # 学習教材と参考資料
 
 - WXBC「気象データ分析チャレンジ」にて Python・気象データの取り扱い・機械学習の基礎を習得
