@@ -117,6 +117,32 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 
 ---
 
+# 気象庁データ取得 MCPサーバー（jma-mcp）
+
+<div class="cols">
+<div>
+
+- 気象庁サイト（bosai.jma.go.jp）が内部で使用する非公開API（認証不要）をAIと解析し、MCPサーバーとして実装
+- 天気予報・警報／注意報・早期注意情報・観測ランキング・潮位など計21種のツールを提供
+- HTTP/SSE版（jma-mcp-remote）をRenderにデプロイし、Claude.ai Web版・デスクトップアプリ・iPhone版からも利用可能
+
+GitHub: https://github.com/masauehr/jma-mcp
+
+</div>
+<div>
+
+**Claude Code へ自然言語で質問するだけで自動的にツールを呼び出し、最新データを取得**
+
+> 「東京の週間天気予報は？」
+> 「沖縄への早期注意情報を教えて」
+> 「那覇の現在の潮位を教えて」
+> 「今日の全国降水量ランキングを見せて」
+
+</div>
+</div>
+
+---
+
 <!-- _backgroundColor: "#dbeafe" -->
 <!-- _color: "#1e3a8a" -->
 <!-- _paginate: false -->
