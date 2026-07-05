@@ -164,7 +164,7 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 </div>
 <div style="text-align: center;">
 
-![w:600](../images/ml_forcast_予測実測グラフ.png)
+![w:600](../images/ml_forcast_kensyo.png)
 
 </div>
 </div>
@@ -174,6 +174,9 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 ---
 
 # 現行モデル（v3 / v3b 並行稼働）
+
+<div class="cols">
+<div>
 
 > **2026-06-07 より v3 移行・2026-06-23 より v3b 並行稼働**
 
@@ -189,6 +192,16 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 |---------|-------------|--------------|
 | 晴れ日（SSD実測 ≥ 5h） | *3.68 kWh* | **1.73 kWh** |
 | 曇り日（SSD実測 < 5h） | **2.61 kWh** | 3.22 kWh |
+
+</div>
+<div style="text-align: center;">
+
+![w:520](../images/gsr.png)
+
+![w:520](../images/sdd.png)
+
+</div>
+</div>
 
 ---
 
