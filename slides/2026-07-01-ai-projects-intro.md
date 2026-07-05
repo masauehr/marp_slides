@@ -141,6 +141,12 @@ GitHub: https://github.com/masauehr/jma-mcp
 </div>
 </div>
 
+<div style="margin-top: 40px; padding: 14px 18px; background: #f1f5f9; border-radius: 6px; font-size: 0.85em; color: #64748b;">
+
+**MCP（Model Context Protocol）とは**: Anthropicが策定したオープン標準プロトコル。AI（Claude）と外部ツール・データソースを接続する仕組みで、これによりAIが学習データにない最新情報やローカル環境の情報をリアルタイムに取得できるようになる。
+
+</div>
+
 ---
 
 <!-- _backgroundColor: "#dbeafe" -->
@@ -170,7 +176,7 @@ GitHub: https://github.com/masauehr/jma-mcp
 **→ 複数モデルを比較検討し、精度が最も高い Random Forest を現行モデルに採用**
 
 </div>
-<div style="text-align: center;">
+<div style="text-align: center; margin-top: -70px;">
 
 ![h:300](../images/nouken_menbunpu.png)
 ![h:300](../images/GSR_nouken_20260705.png)
