@@ -286,17 +286,28 @@ GitHub: https://github.com/masauehr/jma-mcp
 
 # まとめ・今後の展開
 
+<div class="cols">
+<div>
+
 - このプレゼンも、Marp CLIというツールをClaude Codeで使いながら自動作成
 - 開発中の各ツールは、GitHubで成果をみえる化し、運用しながら継続的に改善を実施
 - 電力データ分析、太陽光発電予測を毎日実行、天気図生成、ローカルLLM、ネット情報まとめなどテーマを拡張中
-- 課題：職場では源内利用開始したが、AIエージェントはまだ使えない。非効率なチャット開発に逆戻り。 
+- 課題：職場では源内利用開始したが、AIエージェントはまだ使えない。非効率なチャット開発に逆戻り。
 - 趣味：当面はAIエージェントで何でも自動化し腕を磨く。ただし趣味の範囲。
 　　　　撮影した地衣類（藻類と菌類の共生体）画像の自動分類手法の検討
 
+</div>
 <div style="text-align: center;">
 
-![w:500](../images/marp_vscode2.png)
+![w:400](../images/marp_vscode2.png)
 
+<div style="display: flex; justify-content: center; gap: 10px; margin-top: 14px;">
+<img src="../images/地衣類1.png" style="height: 150px; border-radius: 4px; object-fit: cover;">
+<img src="../images/地衣類2.png" style="height: 150px; border-radius: 4px; object-fit: cover;">
+<img src="../images/地衣類3.png" style="height: 150px; border-radius: 4px; object-fit: cover;">
+</div>
+
+</div>
 </div>
 
 以上
