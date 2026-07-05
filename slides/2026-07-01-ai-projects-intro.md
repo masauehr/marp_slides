@@ -128,8 +128,6 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 
 農研機構AMD（メッシュ農業気象データ）のGSR・GSR/平年比・SSDを説明変数に、自宅の日別太陽光発電量（kWh）をRandom Forestで予測。
 
-🌐 https://uehr.net/ml_forecast/
-
 ### 直近5日間の発電量予測（最終更新: 2026-07-05）
 
 | 日付 | GSR | 平年比 | SSD | 天気 | v3 | v3b |
@@ -145,7 +143,7 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 </div>
 <div style="text-align: center;">
 
-![w:600](../../claude_writing/examples/images/forecast_vs_actual.png)
+![w:600](../images/ml_forcast_予測実測グラフ.png)
 
 </div>
 </div>
