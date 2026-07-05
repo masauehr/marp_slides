@@ -68,16 +68,18 @@ paginate: true
 
 ---
 
-# 3気象モデルによる進路予測の比較
+# 4気象モデルによる進路予測の比較
 
-GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）による地上気圧予報を並列表示。
-例: 2026年5月29日12UTC初期値、84時間予報。
+GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）・AIFS（ECMWF AI予測）による地上気圧予報を並列表示。
+例: 2026年6月19日00UTC初期値、156時間予報（6/25 21時JST時点）。
 
-![w:300](../../claude_writing/examples/images/2026052912_FT084h_GSM_SurfacePressure.png)
-![w:300](../../claude_writing/examples/images/2026052912_FT084h_ECM_SurfacePressure.png)
-![w:300](../../claude_writing/examples/images/2026052912_FT084h_GFS_SurfacePressure.png)
+<div style="text-align: center;">
 
-> GSM を含む3モデル比較表示は独自開発。台風接近時の進路確認に活用している
+![w:1000](../images/typhoon_multi.png)
+
+</div>
+
+> GSM を含む4モデル比較表示は独自開発。台風接近時の進路確認に活用している
 
 ---
 
