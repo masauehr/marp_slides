@@ -30,17 +30,26 @@ paginate: true
 
 - 約2年前より生成AIを利用したコード作成を開始。チャットベースでWebアプリの試作を実施
 - その後 AI エージェントの活用方法を知り、今年3月からClaude Code での開発を開始
-  - フォルダにマークダウンファイルを保存（CLAUDE.md、plan.mdなど）し、AIに読ませて開発
-  - チャットで指示を出しAIが直接pythonコードを書いて保存、チャットの内容をまとめさせてマニュアル化
 - チャットでの要件整理 → GitHub への push → ドキュメント化、という一連の流れを反復し、改良していく
 - 半年間で **34件** のGitHubリポジトリ（毎日のデータ自動取得やグラフ化、アプリ、ニュース検索等）を作成
 
 > 天気図・発電量予測・電力データ分析・ローカルLLM比較など、実用ニーズに応じてテーマを設定
 
+<div class="cols">
 <div style="text-align: center;">
 
-![w:520](../images/claude-code-welcome.png)
+![w:420](../images/claude-code-welcome.png)
 
+</div>
+<div>
+
+**Claude Code の具体的な使い方**
+
+- フォルダにマークダウンファイルを保存（CLAUDE.md、plan.mdなど）し、AIに読ませて開発
+- チャットで指示を出しAIが直接pythonコードを書いて保存
+- チャットの内容をまとめさせてマニュアル化
+
+</div>
 </div>
 
 ---
@@ -137,9 +146,8 @@ GSM（気象庁）・ECMWF（欧州中期予報センター）・GFS（米国）
 </div>
 <div style="text-align: center;">
 
-![h:230](../images/nouken_menbunpu.png)
-
-![h:230](../images/GSR_nouken_20260705.png)
+![h:300](../images/nouken_menbunpu.png)
+![h:300](../images/GSR_nouken_20260705.png)
 
 </div>
 </div>
