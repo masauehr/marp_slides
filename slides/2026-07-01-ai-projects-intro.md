@@ -17,7 +17,7 @@ paginate: true
 
 ---
 
-# アジェンダ
+# 目次
 
 1. 生成AI活用の経緯
 2. 開発したプロダクト（気象・予測ツール）
@@ -34,6 +34,12 @@ paginate: true
 - 半年間で **34件** のリポジトリを作成
 
 > 天気図・発電量予測・電力データ分析・ローカルLLM比較など、実用ニーズに応じてテーマを設定
+
+<div style="text-align: center;">
+
+![w:520](../images/claude-code-welcome.png)
+
+</div>
 
 ---
 
