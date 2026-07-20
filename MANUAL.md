@@ -615,6 +615,38 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 
 ---
 
+## 作成済みスライド一覧と変換オプション
+
+`slides/` 配下の各 Marp スライドを何のオプションで変換したか一覧化したもの。再変換する際はここを見て同じオプションを使うこと。**オプションを間違えると `style` 属性が消えて崩れる（`--html` 忘れ）、テキストが編集できなくなる（`--pptx-editable` 忘れ）等の問題が再発する。**
+
+| ソース `.md` | テーマ | 出力ファイル | 変換オプション | 備考 |
+|---|---|---|---|---|
+| `2026-06-30-marp-introduction.md` | `ml-forecast` | `.pdf` / `.pptx`（通常＝画像焼き込み） | `--theme themes/ml-forecast.css --allow-local-files` | 生HTML/style属性を使用していないため `--html` 不要 |
+| `2026-06-30-ml-forecast.md` | `ml-forecast` | `.pdf` / `.pptx`（通常） | `--theme themes/ml-forecast.css --allow-local-files` | 同上 |
+| `2026-06-ml-forecast.md` | `ml-forecast` | `.pdf` / `.pptx`（通常） | `--theme themes/ml-forecast.css --allow-local-files` | 同上 |
+| `jma_mcp.md` | `ml-forecast` | `.pptx`（通常） | `--theme themes/ml-forecast.css --allow-local-files` | PDF未生成。`--html` 不要 |
+| `tenkizu_readme.md` | `ml-forecast` | `.pdf` / `.pptx`（通常） | `--theme themes/ml-forecast.css --allow-local-files` | `--html` 不要 |
+| `2026-07-01-ai-projects-intro.md` | `ml-forecast` | `uehara_ai.pdf` / `uehara_ai.pptx`（**editable**） | `--theme themes/ml-forecast.css --html --allow-local-files`（PPTXはさらに `--pptx --pptx-editable`） | **`style="..."` 属性（flexbox横並び・2カラム比率・中央寄せ等）を多用しているため `--html` が必須**。出力ファイル名がソース `.md` と異なる（`uehara_ai`）点に注意。テキスト編集可能なPPTXが必要という要望により `--pptx-editable` を使用（要 LibreOffice） |
+| `2026-07-01-ai-projects-intro-note.md` | — | 変換しない | — | note.com 投稿用に手動整形したMarkdown。Marp変換の対象外（frontmatterなし） |
+
+**`uehara_ai` の完全な再生成コマンド:**
+
+```bash
+cd /Users/masahiro/projects/marp_slides
+
+# PDF
+npx @marp-team/marp-cli slides/2026-07-01-ai-projects-intro.md \
+  --theme themes/ml-forecast.css --html \
+  --pdf -o slides/uehara_ai.pdf --allow-local-files
+
+# PPTX（編集可能）
+npx @marp-team/marp-cli slides/2026-07-01-ai-projects-intro.md \
+  --theme themes/ml-forecast.css --html \
+  --pptx --pptx-editable -o slides/uehara_ai.pptx --allow-local-files
+```
+
+---
+
 ## 更新履歴
 
 | 日付 | 内容 |
@@ -626,3 +658,4 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 | 2026-07-02 | Marp CLIに実験的機能 `--pptx-editable` があり、LibreOffice（要`brew install --cask libreoffice`）を使うことで本物の編集可能なテキストボックスを持つPPTXを生成できることを確認・追記。Marp用のFront Matterが無い生のREADME.mdでも変換できることを確認。比較表・使い分けの目安を更新（Marpのデザインを保ったまま編集したい場合の第一候補として案内） |
 | 2026-07-02 | `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable`（off/on/smart）として存在することを確認・追記。VSCODE-MARP.mdに設定手順を追加し、比較表の表記をCLI/VS Code拡張両対応に更新 |
 | 2026-07-05 | 「高度なレイアウトテクニック（2カラム・画像配置・微調整）」セクションを追加。`slides/2026-07-01-ai-projects-intro.md` の作成・改修作業で確立した手法（レイアウト情報は`.md`のみに存在しPPTX/PDFはビルド成果物であること、`--html`フラグが必要なケース、`.cols`比率調整、negative margin-topでの画像位置調整、flexboxでの複数画像横並び、自作SVG図解の埋め込みと矢印・ラベル重なり回避）を記載 |
+| 2026-07-20 | 「作成済みスライド一覧と変換オプション」セクションを追加。`slides/` 配下の各ソース`.md`について使用テーマ・`--html`要否・`--pptx-editable`要否を一覧表で記録。`uehara_ai.pptx`変換時に`--html`忘れでスタイルが崩れる不具合が発生した実例を踏まえ、再変換時の参照先として整備 |
