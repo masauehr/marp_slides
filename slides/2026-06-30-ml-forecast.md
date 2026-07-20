@@ -71,7 +71,7 @@ paginate: true
 <!-- _color: "#1e3a8a" -->
 <!-- _paginate: false -->
 
-# AMD 予報精度（GSR・SSD）
+# AMGSDS 予報精度（GSR・SSD）
 
 ---
 
@@ -184,7 +184,7 @@ paginate: true
 ```
 6:30 launchd 起動
   │
-  ├─① AMD API から GSR・SSD 予報を取得（自宅座標 N26.17, E127.74）
+  ├─① AMGSDS API から GSR・SSD 予報を取得（自宅座標 N26.17, E127.74）
   │
   ├─② RF モデルで当日発電量を予測（v3・v3b 並行）
   │
