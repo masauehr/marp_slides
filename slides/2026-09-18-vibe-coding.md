@@ -379,20 +379,20 @@ GitHub: https://github.com/masauehr/jma-mcp
 # 「vibe coding」という言葉の由来
 
 - 2025年2月、AI研究者アンドレイ・カルパシー氏（元Tesla AI責任者・OpenAI共同創業者）がXで提唱
-- 日本語では「感覚駆動開発」「ノリ駆動開発」などと訳されることもある
+- 日本語では「感覚駆動開発」「ノリ駆動開発」と訳されることもあり、字面だけ見ると軽い言葉に映るが、実際は**個人開発・プロトタイピングに特化した開発スタイル**を指す言葉
 
 <div style="margin: 20px 0; padding: 16px 20px; background: #f1f5f9; border-left: 4px solid #2563eb; border-radius: 4px; font-size: 0.9em;">
 
-"There's a new kind of coding I call **'vibe coding'**, where you fully give in to the vibes, embrace exponentials, and forget that the code even exists."
+"There's a new kind of coding I call **'vibe coding'**, where you fully give in to the vibes, embrace exponentials, and forget that the code even exists. [...] It's not too bad for throwaway weekend projects."
 — Andrej Karpathy (2025/2/2)
 
 </div>
 
-- 「バイブ（雰囲気・ノリ）に身を委ね、コードの存在をほぼ意識せずに動くものを作っていく」開発スタイル
-- コードを一行ずつ書くのではなく、**見て・言って・動かして・貼り付ける**を繰り返す
+- 提唱者本人が「**使い捨ての週末プロジェクト向け**」と明言しており、最初から商用・本番システム開発とは切り分けて語られた概念
+- コードを一行ずつ書くのではなく、**見て・言って・動かして・貼り付ける**を繰り返し、動くものを素早く形にする
 
-> 開発の専門知識よりも「何を作りたいか」を言葉で伝える力が重要になる、新しい開発の形
-> ドメイン知識（業務領域の専門知識）を持つものが自ら作り改良できるので、痒いところに手が届くアプリを作れる
+> **個人開発向き**: ドメイン知識（業務領域の専門知識）を持つ人が自ら作り改良できるので、痒いところに手が届くアプリを素早く形にできる
+> **商用アプリ開発とは別物**: レビュー・テスト・セキュリティ対策を伴う本番開発にそのまま持ち込む発想ではなく、あくまで個人の学習・プロトタイピング用途に強みがある開発スタイル
 
 ---
 
