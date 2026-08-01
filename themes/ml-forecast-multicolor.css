@@ -17,6 +17,8 @@
   --color-border:  #e2e8f0;
   --font-sans:     'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif;
   --font-mono:     'SFMono-Regular', Consolas, 'Courier New', monospace;
+  /* グレイン/ノイズ質感（feTurbulence, opacity 0.5のSVGをタイル状に敷く） */
+  --noise: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCglMjNuKSIgb3BhY2l0eT0iMC41Ii8+PC9zdmc+");
 }
 
 /* ベーススライド */
@@ -28,14 +30,15 @@ section {
   padding: 48px 56px;
 }
 
-/* 見出し */
+/* 見出し
+   注意: 以前はグラデーション文字（background-clip:text）を使っていたが、
+   --pptx-editable（LibreOffice再構築）が正しく再現できず、スライドに
+   よって「黒文字のみ」「文字の後ろに帯として残る」等バラバラに崩れる
+   不具合が判明したため、単色（紫）+ オレンジ下線のスタイルに変更した */
 h1 {
   font-size: 2em;
   font-weight: 800;
-  background: linear-gradient(90deg, var(--color-blue), var(--color-violet) 60%, var(--color-magenta));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-violet);
   border-bottom: 4px solid var(--color-orange);
   padding-bottom: 0.2em;
   margin-bottom: 0.6em;
@@ -150,3 +153,99 @@ section[style*="background-color: #2563eb"] h1 {
   -webkit-text-fill-color: #ffffff;
   border-bottom-color: rgba(255,255,255,0.3);
 }
+
+/* ========================================================
+   ヒーロー背景バリエーション（表紙・まとめ等の全面色スライド用）
+   使い方: スライドのディレクティブに `<!-- _class: hero-xxx -->` を
+   追加するだけ（_backgroundColor / _color の個別指定は不要）
+   注意: このテーマのh1はグラデーション文字（background-clip:text）
+   なので、hero-*配下では background / -webkit-text-fill-color を
+   明示的にリセットして単色白文字に戻す
+   ======================================================== */
+
+section.hero-gradient {
+  background-image:
+    var(--noise),
+    radial-gradient(circle at 12% 15%, rgba(235,104,52,0.55), transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(232,123,164,0.45), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(27,175,122,0.40), transparent 48%),
+    radial-gradient(circle at 8% 88%, rgba(237,161,0,0.35), transparent 45%),
+    linear-gradient(135deg, #1e3a8a 0%, #2d2f7a 45%, #4a3aa7 75%, #1e3a8a 100%);
+  background-blend-mode: soft-light, normal, normal, normal, normal, normal;
+  background-size: 220px 220px, cover, cover, cover, cover, cover;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  color: #ffffff;
+}
+section.hero-gradient h1 {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+section.hero-gradient h2,
+section.hero-gradient h3 { color: #ffffff; }
+section.hero-gradient strong { color: var(--color-yellow); }
+
+section.hero-geo {
+  background-image:
+    var(--noise),
+    radial-gradient(circle at 88% 18%, rgba(255,255,255,0.10) 0 170px, transparent 171px),
+    radial-gradient(circle at 94% 78%, rgba(235,104,52,0.40) 0 85px, transparent 86px),
+    radial-gradient(circle at 6% 88%, rgba(255,255,255,0.07) 0 110px, transparent 111px),
+    radial-gradient(circle at 4% 10%, rgba(29,175,122,0.28) 0 60px, transparent 61px),
+    linear-gradient(160deg, #24449c 0%, #1e3a8a 60%, #1a3277 100%);
+  background-blend-mode: soft-light, normal, normal, normal, normal, normal;
+  background-size: 220px 220px, cover, cover, cover, cover, cover;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  color: #ffffff;
+}
+section.hero-geo h1 {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+section.hero-geo h2,
+section.hero-geo h3 { color: #ffffff; }
+
+section.hero-side {
+  background-image:
+    var(--noise),
+    linear-gradient(90deg, #2a4aa0 0%, #1e3a8a 38%, #1e3a8a 42%, var(--color-bg) 42%, var(--color-bg) 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: 220px 220px, cover;
+  background-repeat: repeat, no-repeat;
+  color: #ffffff;
+  padding-right: 60%;
+}
+section.hero-side h1 {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+section.hero-side h2,
+section.hero-side h3 { color: #ffffff; }
+
+section.hero-diagonal {
+  background-image:
+    var(--noise),
+    linear-gradient(100deg, #2a4aa0 0%, #1e3a8a 26%, #1e3a8a 34%, var(--color-bg) 35%, var(--color-bg) 100%);
+  background-blend-mode: soft-light, normal;
+  background-size: 220px 220px, cover;
+  background-repeat: repeat, no-repeat;
+  color: #ffffff;
+  padding-right: 68%;
+}
+section.hero-diagonal h1 {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+section.hero-diagonal h2,
+section.hero-diagonal h3 { color: #ffffff; }

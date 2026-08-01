@@ -158,7 +158,7 @@ Front Matter の `theme:` 値と、変換コマンドの `--theme` パスを対�
 | テーマ名（`theme:` の値） | プレビュー | 特徴 |
 |---|---|---|
 | `ml-forecast`（デフォルト） | ![ml-forecast](themes/samples/palette-ml-forecast.png) | パステルカラフル。紫・水色・黄色・マゼンダを要素ごとに使い分け、柔らかく上品な印象 |
-| `ml-forecast-multicolor` | ![multicolor](themes/samples/palette-multicolor.png) | マルチカラー。グラデーション見出し＋グラデーションテーブルヘッダーで最も賑やか |
+| `ml-forecast-multicolor` | ![multicolor](themes/samples/palette-multicolor.png) | マルチカラー。紫の見出し＋グラデーションテーブルヘッダーで賑やか（見出しは元々グラデーション文字だったが、editable PPTXで崩れるため単色に変更） |
 | `ml-forecast-vivid` | ![vivid](themes/samples/palette-vivid.png) | ビビッドグラデーション。紫基調のシングルアクセントで華やかさと落ち着きの中間 |
 
 ```markdown
@@ -172,7 +172,7 @@ theme: ml-forecast-multicolor   ← CSSの /* @theme */ 名と一致させる
 
 ### ヒーロー背景パターン（表紙・まとめ等の全面色スライド用）
 
-`<!-- _class: hero-xxx -->` を指定するだけで切り替えられる（`_backgroundColor` / `_color` の個別指定は不要）。現時点では `ml-forecast`（デフォルト）にのみ実装済み（`ml-forecast-multicolor` / `ml-forecast-vivid` には未移植）。
+`<!-- _class: hero-xxx -->` を指定するだけで切り替えられる（`_backgroundColor` / `_color` の個別指定は不要）。3配色テーマすべてに実装済み。
 
 | クラス名 | プレビュー | 特徴 |
 |---|---|---|

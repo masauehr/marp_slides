@@ -355,6 +355,8 @@ npx @marp-team/marp-cli --pptx --pptx-editable \
     slide.shapes.add_picture("cover.png", 0, 0, width=prs.slide_width, height=prs.slide_height)
     prs.save("output.pptx")
     ```
+- **グラデーション文字（`background-clip: text`）もLibreOfficeが正しく再構築できない**（2026-08-01、`themes/ml-forecast-multicolor.css` のh1見出しで確認）。CSS上は単純な`linear-gradient`＋`background-clip:text`でも、editable PPTXでは**スライドによって挙動がバラバラに崩れる**——ある見出しは黒一色の文字になり、別の見出しではグラデーションが「文字の後ろに乗る色帯（矩形）」として再構築されて文字は黒のまま、という具合。見た目のバランスが崩れて非常に見づらくなる（PDF・通常PPTXは影響なし）
+  - 対処法: グラデーション文字はeditable PPTX運用と根本的に相性が悪いため、`h1`を単色（アクセントカラー1色）＋下線装飾に変更した。見出し1つ1つを画像化する部分的ハイブリッド対応は非現実的（本文と一体のテキストボックスのため）なので、この場合は**CSS側で表現をあきらめるのが確実**
 
 **VS Code拡張版でも利用可能**: `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable` として存在する（`off`/`on`/`smart`の3値、デフォルトは`off`）。`.vscode/settings.json` に追記して `Marp: Export Slide Deck` を実行するだけでよい。こちらもLibreOffice Impressのインストールが必要。詳細は [VSCODE-MARP.md](VSCODE-MARP.md) の「5. PDF / PPTX へのエクスポート」内「編集可能な PPTX を出力する」節を参照。
 
