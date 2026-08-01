@@ -3,12 +3,17 @@
 @import 'default';
 
 :root {
-  --color-bg:      #ffffff;
-  --color-fg:      #1a1a2e;
-  --color-accent:  #2563eb;
-  --color-sub:     #64748b;
-  --color-muted:   #f1f5f9;
-  --color-border:  #e2e8f0;
+  --color-bg:      #fffdf9;
+  --color-fg:      #24222b;
+  --color-blue:    #2a78d6;
+  --color-orange:  #eb6834;
+  --color-aqua:    #1baf7a;
+  --color-yellow:  #eda100;
+  --color-magenta: #e87ba4;
+  --color-violet:  #4a3aa7;
+  --color-sub:     #726f7d;
+  --color-muted:   #f7f3ee;
+  --color-border:  #ece7e0;
   --font-sans:     'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif;
   --font-mono:     'SFMono-Regular', Consolas, 'Courier New', monospace;
 }
@@ -24,23 +29,23 @@ section {
 
 /* 見出し */
 h1 {
-  color: var(--color-accent);
+  color: var(--color-violet);
   font-size: 2em;
   font-weight: 700;
-  border-bottom: 3px solid var(--color-accent);
   padding-bottom: 0.2em;
   margin-bottom: 0.6em;
+  border-bottom: 3px solid var(--color-yellow);
 }
 
 h2 {
-  color: var(--color-fg);
+  color: var(--color-blue);
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
 
 h3 {
-  color: var(--color-sub);
+  color: var(--color-aqua);
   font-size: 1.1em;
   font-weight: 600;
   margin-bottom: 0.3em;
@@ -52,10 +57,12 @@ table {
   width: 100%;
   font-size: 0.9em;
   margin: 0.8em 0;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 th {
-  background: var(--color-accent);
+  background: var(--color-violet);
   color: #fff;
   padding: 6px 12px;
   text-align: left;
@@ -66,22 +73,22 @@ td {
   border-bottom: 1px solid var(--color-border);
 }
 
-tr:nth-child(even) td {
-  background: var(--color-muted);
-}
+tr:nth-child(even) td { background: #f3ecfa; }
+tr:nth-child(odd) td { background: #fdf6ec; }
 
 /* コードブロック */
 code {
   font-family: var(--font-mono);
   background: var(--color-muted);
+  color: var(--color-orange);
   padding: 1px 5px;
   border-radius: 3px;
   font-size: 0.85em;
 }
 
 pre {
-  background: #1e293b;
-  color: #e2e8f0;
+  background: #2c2836;
+  color: #f0ece0;
   border-radius: 6px;
   padding: 16px;
   font-size: 0.8em;
@@ -94,14 +101,13 @@ ul, ol {
   line-height: 1.8;
 }
 
-li {
-  margin-bottom: 0.2em;
-}
+li { margin-bottom: 0.2em; }
+li::marker { color: var(--color-aqua); }
 
 /* 引用（ポイントボックス風） */
 blockquote {
-  background: #eff6ff;
-  border-left: 4px solid var(--color-accent);
+  background: #eaf6f0;
+  border-left: 4px solid var(--color-aqua);
   padding: 10px 16px;
   margin: 0.8em 0;
   border-radius: 0 4px 4px 0;
@@ -118,10 +124,10 @@ section::after {
 }
 
 /* 強調テキスト */
-strong { color: var(--color-accent); }
+strong { color: var(--color-magenta); }
 
 em {
-  color: #dc2626;
+  color: var(--color-blue);
   font-style: normal;
   font-weight: 600;
 }
