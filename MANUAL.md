@@ -344,6 +344,17 @@ npx @marp-team/marp-cli --pptx --pptx-editable \
 - Marp公式が「実験的機能」「LibreOffice に依存し、スライドの再現性は完全には保証されない」と明記している。複雑なCSSレイアウト（多段組み・独自アニメーション等）は崩れる可能性がある
 - 変換後は必ず PowerPoint で見た目を目視確認すること
 - 内容が多いスライド（表・コードブロックが多い等）は、Marp自体がその通りにレンダリングするため、そのまま変換すると1スライドに情報が詰まりすぎる場合がある。元のMarkdown側で内容を絞る・スライドを分けるといった調整は引き続き必要
+- **複雑な背景（多重`background-image`・`background-blend-mode`・SVGノイズ等）はLibreOfficeが正しく再構築できず崩れる**（2026-08-01、`themes/ml-forecast.css` の `hero-gradient`〔メッシュ風グラデーション＋グレイン質感〕で確認）。LibreOfficeは背景を大量の`FREEFORM`図形で近似しようとし、階段状に崩れた模様になる。**通常の`--pptx`（画像焼き込み）や`--pdf`はChromiumのスクリーンショット方式なので影響を受けず正しく表示される**——崩れるのは`--pptx-editable`のLibreOffice再構築ルートのみ
+  - 対処法（該当スライドのみ画像化するハイブリッド構成）: `python-pptx` で該当スライドの既存シェイプを全削除し、Chromiumレンダリング側（`--images png` で書き出したPNG、またはPDFから`pdftoppm`で抽出したPNG）を全面画像として`add_picture`で貼り付ける。他のスライドのテキスト編集可能性はそのまま維持できる
+    ```python
+    from pptx import Presentation
+    prs = Presentation("output.pptx")
+    slide = prs.slides[0]  # 崩れるスライドのインデックス
+    for shape in list(slide.shapes):
+        shape._element.getparent().remove(shape._element)
+    slide.shapes.add_picture("cover.png", 0, 0, width=prs.slide_width, height=prs.slide_height)
+    prs.save("output.pptx")
+    ```
 
 **VS Code拡張版でも利用可能**: `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable` として存在する（`off`/`on`/`smart`の3値、デフォルトは`off`）。`.vscode/settings.json` に追記して `Marp: Export Slide Deck` を実行するだけでよい。こちらもLibreOffice Impressのインストールが必要。詳細は [VSCODE-MARP.md](VSCODE-MARP.md) の「5. PDF / PPTX へのエクスポート」内「編集可能な PPTX を出力する」節を参照。
 
@@ -691,6 +702,7 @@ npx @marp-team/marp-cli slides/2026-07-01-ai-projects-intro.md \
 | 2026-07-20 | 「作成済みスライド一覧と変換オプション」セクションを追加。`slides/` 配下の各ソース`.md`について使用テーマ・`--html`要否・`--pptx-editable`要否を一覧表で記録。`uehara_ai.pptx`変換時に`--html`忘れでスタイルが崩れる不具合が発生した実例を踏まえ、再変換時の参照先として整備 |
 | 2026-07-28 | `2026-09-18-vibe-coding.md` を追加。`2026-07-01-ai-projects-intro.md` をベースに、WXBC人材育成WG全体会合向けにタイトル・概要・結論を差し替えた派生版。「作成済みスライド一覧」に行を追加 |
 | 2026-08-01 | `themes/ml-forecast.css` の配色をパステルカラフルに刷新。配色違いの `themes/ml-forecast-multicolor.css`（マルチカラー）・`themes/ml-forecast-vivid.css`（ビビッドグラデーション）を追加し、「配色バリエーション（ml-forecast系テーマ）」セクションで Front Matter の `theme:` 値と `--theme` パスを揃えることで切り替えられる方法を記載。また `2026-09-18-vibe-coding.md` のスライド10・13で `--html` フラグ未指定によりflexbox横並び画像が縦積みになり画面外にはみ出す不具合を修正し、画像サイズを拡大 |
+| 2026-08-01 | 表紙・まとめ等の全面色スライド用に `hero-gradient`/`hero-geo`/`hero-side`/`hero-diagonal` の4クラスを `themes/ml-forecast.css` に追加（`<!-- _class: hero-xxx -->` で切り替え）。実装中、Marpの出力はSVG `foreignObject` 経由のため `::before`/`::after` 疑似要素が描画されないことを確認し、`background-image` の複数レイヤー（`radial-gradient` 重ね・角度付き `linear-gradient` のハードエッジ）で代替する方式を確立。その後 `hero-gradient` をメッシュ風グラデーション＋SVGグレイン質感にリッチ化し、他3パターンにも同じグレインと内部しみグラデーションを追加。`vibe-coding.md` の表紙・まとめに `hero-gradient` を適用したところ、`--pptx-editable`（LibreOffice再構築）が複雑な背景を正しく処理できず崩れる不具合を発見（詳細は「編集可能な PPTX を作る」節の注意点を参照）。該当2枚のみ `python-pptx` で画像焼き込みに差し替えるハイブリッド対処法を確立・適用 |
 | 2026-07-28 | `2026-09-18-vibe-coding.md` に3枚追加：「開発サイクル」（`slides/開発サイクル_ポンチ絵.svg` を `images/dev_cycle.svg` にコピーして使用）、「ml_forecast のきっかけ」（WXBC「アメダス気象データ分析チャレンジ」教材の散布図を `images/wxbc_challenge_scatter.png` として追加）、「グラフからデータを読み取る仕組み」（`ml_forecast/data/hatuden/` のアプリ棒グラフを切り出し `images/hatuden_app_chart.png` として追加）。概要スライドは目次より前に配置し、経緯スライドは分割してオーバーフローを解消 |
 | 2026-07-28 | `2026-09-18-vibe-coding.md` を再編集：①「開発サイクル」の単独スライドを廃止し、SVGを「生成AI活用からClaude Codeによる開発へ」スライド内の2カラムに統合、②「衛星画像・レーダー表示アプリ」のタイトルを「衛星画像・レーダー表示アプリ、潮位観測表示アプリを開発」に変更し、`--pptx-editable`変換後にPowerPointへ手動貼付されていた潮位観測アプリのスクリーンショットを`ppt/media/image4.jpeg`から抽出して`images/tide_viewer.jpeg`として`.md`側に取り込み、公開URL（tide_viewer）も追加、③「ml_forecast のきっかけ」に`slides/気温と電力の関係.png`を`images/temp_power_scatter.png`としてコピーし既存散布図の左に並べて表示、④「農業気象データによる太陽光発電量予測」と「教師データ（太陽光発電量）の取得をAIで解決」の順序を入れ替え、⑤まとめスライドの `<div class="cols">` タグ不整合（地衣類画像削除後の残骸）を修正し、`jma_mcp/README.md`「社内活用：RAGチャットボット vs MCPサーバー」の比較内容を踏まえてRAG開発着手の方針を追記 |
 | 2026-07-28 | ユーザーが `2026-09-18-vibe-coding.pptx` をPowerPoint上で直接編集したため、その内容を `.md` に逆反映：「農研機構データ×ml_forecastの取り組み」divierを「農研機構メッシュ農業気象データ×AIによる機会学習の取り組み」に、「ml_forecast のきっかけ」を「取り組みのきっかけ」に改題し、「教師データ（太陽光発電量）の取得をAIで解決」の3番目の箇条書きを「画像データから発電量を読み取る仕組みと手入力で発電量を追加するアプリ（Jupyter Notebook）を作成し、日々の精度検証にも活用」に差し替え。目次も新タイトルに合わせて更新。**判明した制約**: `dev_cycle.svg`（開発サイクル図）は `--pptx-editable` 変換時にLibreOfficeがSVGをピクチャとして埋め込めず、生成された`.pptx`のスライド4には画像が入らない（PDFでは正しく表示される）。SVGを使うスライドをeditable PPTXで配布する場合は要注意 |
