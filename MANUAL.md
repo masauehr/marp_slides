@@ -170,6 +170,33 @@ theme: テーマ名   ← CSSの /* @theme テーマ名 */ と一致させる
 ---
 ```
 
+### 配色バリエーション（ml-forecast系テーマ）
+
+`ml-forecast` をベースにした配色違いのテーマを3種類 `themes/` に用意している。**Front Matter の `theme:` 値と変換コマンドの `--theme` パスを対応するファイルにそろえるだけで切り替えられる**（この2箇所が「設定」）。
+
+| テーマ名（`theme:` に書く値） | CSSファイル | 配色の方向性 |
+|---|---|---|
+| `ml-forecast`（デフォルト） | `themes/ml-forecast.css` | パステルカラフル。オフホワイト背景に紫・水色・黄色・マゼンダを要素ごとに使い分け。柔らかく上品な印象 |
+| `ml-forecast-multicolor` | `themes/ml-forecast-multicolor.css` | マルチカラー。見出しに青→紫→マゼンダのグラデーション、テーブルヘッダーもグラデーション。最も賑やかで華やか |
+| `ml-forecast-vivid` | `themes/ml-forecast-vivid.css` | ビビッドグラデーション。紫を基調にしたシングルアクセント、見出し下のアンダーラインのみ多色グラデーション。落ち着きと華やかさの中間 |
+
+3つとも配色以外（レイアウト・`.cols` クラス・ダーク背景時の見出し文字色フォールバック等）の構造は共通なので、どれを選んでも既存スライドの `.md` はそのまま使い回せる。
+
+切り替え手順:
+
+1. 対象の `.md` の Front Matter を書き換える
+   ```markdown
+   theme: ml-forecast-multicolor
+   ```
+2. 変換コマンドの `--theme` を同じテーマのCSSに合わせる
+   ```bash
+   npx @marp-team/marp-cli slides/xxx.md \
+     --theme themes/ml-forecast-multicolor.css --html --allow-local-files \
+     --pptx --pptx-editable -o slides/xxx.pptx
+   ```
+
+`--theme` に渡すファイルと Front Matter の `theme:` 値が食い違うと意図通りに反映されないので、必ずセットで変更すること。
+
 ---
 
 ## 変換コマンド（PPTX / PDF）
@@ -619,6 +646,8 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 
 `slides/` 配下の各 Marp スライドを何のオプションで変換したか一覧化したもの。再変換する際はここを見て同じオプションを使うこと。**オプションを間違えると `style` 属性が消えて崩れる（`--html` 忘れ）、テキストが編集できなくなる（`--pptx-editable` 忘れ）等の問題が再発する。**
 
+下表のテーマ欄はすべて `ml-forecast`（パステルカラフル/デフォルト）だが、`ml-forecast-multicolor` / `ml-forecast-vivid` に切り替えることも可能。切り替え方は上記「配色バリエーション（ml-forecast系テーマ）」セクションを参照。
+
 | ソース `.md` | テーマ | 出力ファイル | 変換オプション | 備考 |
 |---|---|---|---|---|
 | `2026-06-30-marp-introduction.md` | `ml-forecast` | `.pdf` / `.pptx`（通常＝画像焼き込み） | `--theme themes/ml-forecast.css --allow-local-files` | 生HTML/style属性を使用していないため `--html` 不要 |
@@ -628,6 +657,7 @@ npx @marp-team/marp-cli slides/YYYY-MM-DD-プロジェクト名.md \
 | `tenkizu_readme.md` | `ml-forecast` | `.pdf` / `.pptx`（通常） | `--theme themes/ml-forecast.css --allow-local-files` | `--html` 不要 |
 | `2026-07-01-ai-projects-intro.md` | `ml-forecast` | `uehara_ai.pdf` / `uehara_ai.pptx`（**editable**） | `--theme themes/ml-forecast.css --html --allow-local-files`（PPTXはさらに `--pptx --pptx-editable`） | **`style="..."` 属性（flexbox横並び・2カラム比率・中央寄せ等）を多用しているため `--html` が必須**。出力ファイル名がソース `.md` と異なる（`uehara_ai`）点に注意。テキスト編集可能なPPTXが必要という要望により `--pptx-editable` を使用（要 LibreOffice） |
 | `2026-07-01-ai-projects-intro-note.md` | — | 変換しない | — | note.com 投稿用に手動整形したMarkdown。Marp変換の対象外（frontmatterなし） |
+| `2026-09-18-vibe-coding.md` | `ml-forecast` | `.pdf` / `.pptx`（**editable**） | `--theme themes/ml-forecast.css --html --allow-local-files`（PPTXはさらに `--pptx --pptx-editable`） | `2026-07-01-ai-projects-intro.md` をベースに、WXBC人材育成WG全体会合（2026-09-18話題提供）向けにタイトル・概要・結論を変更した派生版。新セクション「バイブコーディングとは」を追加。`.cols` 等のstyle属性を使用しているため `--html` 必須 |
 
 **`uehara_ai` の完全な再生成コマンド:**
 
@@ -659,3 +689,13 @@ npx @marp-team/marp-cli slides/2026-07-01-ai-projects-intro.md \
 | 2026-07-02 | `--pptx-editable` はMarp CLI専用ではなく、`Marp for VS Code` 拡張機能にも同等の設定 `markdown.marp.pptx.editable`（off/on/smart）として存在することを確認・追記。VSCODE-MARP.mdに設定手順を追加し、比較表の表記をCLI/VS Code拡張両対応に更新 |
 | 2026-07-05 | 「高度なレイアウトテクニック（2カラム・画像配置・微調整）」セクションを追加。`slides/2026-07-01-ai-projects-intro.md` の作成・改修作業で確立した手法（レイアウト情報は`.md`のみに存在しPPTX/PDFはビルド成果物であること、`--html`フラグが必要なケース、`.cols`比率調整、negative margin-topでの画像位置調整、flexboxでの複数画像横並び、自作SVG図解の埋め込みと矢印・ラベル重なり回避）を記載 |
 | 2026-07-20 | 「作成済みスライド一覧と変換オプション」セクションを追加。`slides/` 配下の各ソース`.md`について使用テーマ・`--html`要否・`--pptx-editable`要否を一覧表で記録。`uehara_ai.pptx`変換時に`--html`忘れでスタイルが崩れる不具合が発生した実例を踏まえ、再変換時の参照先として整備 |
+| 2026-07-28 | `2026-09-18-vibe-coding.md` を追加。`2026-07-01-ai-projects-intro.md` をベースに、WXBC人材育成WG全体会合向けにタイトル・概要・結論を差し替えた派生版。「作成済みスライド一覧」に行を追加 |
+| 2026-08-01 | `themes/ml-forecast.css` の配色をパステルカラフルに刷新。配色違いの `themes/ml-forecast-multicolor.css`（マルチカラー）・`themes/ml-forecast-vivid.css`（ビビッドグラデーション）を追加し、「配色バリエーション（ml-forecast系テーマ）」セクションで Front Matter の `theme:` 値と `--theme` パスを揃えることで切り替えられる方法を記載。また `2026-09-18-vibe-coding.md` のスライド10・13で `--html` フラグ未指定によりflexbox横並び画像が縦積みになり画面外にはみ出す不具合を修正し、画像サイズを拡大 |
+| 2026-07-28 | `2026-09-18-vibe-coding.md` に3枚追加：「開発サイクル」（`slides/開発サイクル_ポンチ絵.svg` を `images/dev_cycle.svg` にコピーして使用）、「ml_forecast のきっかけ」（WXBC「アメダス気象データ分析チャレンジ」教材の散布図を `images/wxbc_challenge_scatter.png` として追加）、「グラフからデータを読み取る仕組み」（`ml_forecast/data/hatuden/` のアプリ棒グラフを切り出し `images/hatuden_app_chart.png` として追加）。概要スライドは目次より前に配置し、経緯スライドは分割してオーバーフローを解消 |
+| 2026-07-28 | `2026-09-18-vibe-coding.md` を再編集：①「開発サイクル」の単独スライドを廃止し、SVGを「生成AI活用からClaude Codeによる開発へ」スライド内の2カラムに統合、②「衛星画像・レーダー表示アプリ」のタイトルを「衛星画像・レーダー表示アプリ、潮位観測表示アプリを開発」に変更し、`--pptx-editable`変換後にPowerPointへ手動貼付されていた潮位観測アプリのスクリーンショットを`ppt/media/image4.jpeg`から抽出して`images/tide_viewer.jpeg`として`.md`側に取り込み、公開URL（tide_viewer）も追加、③「ml_forecast のきっかけ」に`slides/気温と電力の関係.png`を`images/temp_power_scatter.png`としてコピーし既存散布図の左に並べて表示、④「農業気象データによる太陽光発電量予測」と「教師データ（太陽光発電量）の取得をAIで解決」の順序を入れ替え、⑤まとめスライドの `<div class="cols">` タグ不整合（地衣類画像削除後の残骸）を修正し、`jma_mcp/README.md`「社内活用：RAGチャットボット vs MCPサーバー」の比較内容を踏まえてRAG開発着手の方針を追記 |
+| 2026-07-28 | ユーザーが `2026-09-18-vibe-coding.pptx` をPowerPoint上で直接編集したため、その内容を `.md` に逆反映：「農研機構データ×ml_forecastの取り組み」divierを「農研機構メッシュ農業気象データ×AIによる機会学習の取り組み」に、「ml_forecast のきっかけ」を「取り組みのきっかけ」に改題し、「教師データ（太陽光発電量）の取得をAIで解決」の3番目の箇条書きを「画像データから発電量を読み取る仕組みと手入力で発電量を追加するアプリ（Jupyter Notebook）を作成し、日々の精度検証にも活用」に差し替え。目次も新タイトルに合わせて更新。**判明した制約**: `dev_cycle.svg`（開発サイクル図）は `--pptx-editable` 変換時にLibreOfficeがSVGをピクチャとして埋め込めず、生成された`.pptx`のスライド4には画像が入らない（PDFでは正しく表示される）。SVGを使うスライドをeditable PPTXで配布する場合は要注意 |
+| 2026-07-28 | ユーザーが再度 `.md` を直接編集（スライド4から最終箇条書きを削除、「5気象モデル」の中黒を除去等）した状態を起点に3点対応：①誤字「機会学習」を「機械学習」に修正（目次・divider見出しの2箇所）、②「Claude Codeの具体的な使い方」と「チャットでの開発 vs Claude Code」の順序を入れ替え（後者を先に）、③「衛星画像・レーダー表示アプリ、潮位観測表示アプリを開発」で縦積みだった`radar.png`と`tide_viewer.jpeg`をflexboxで横並び（各`height:320px`）に変更 |
+| 2026-07-29 | `dev_cycle.svg`（開発サイクル図）を「生成AI活用からClaude Codeによる開発へ」（スライド4）から「私にとってのバイブコーディング」（スライド21、タイトルを「vibe coding X GitHub 私の開発スタイル」に改題）へ移動。スライド21の`marp_vscode2.png`はdev_cycle.svgに置き換え、スライド4は画像なしの単一カラム箇条書きに戻した。**制約の再確認**: 移動先のスライド21でも同じくSVGが`--pptx-editable`変換で埋め込まれず、`.pptx`側は空白のまま（PDF版は正常）。根本対応にはSVGの事前PNG化が必要 |
+| 2026-07-30 | ユーザーが `.md` を直接編集（概要文の書き直し、発表者名追加、天気図・現行モデルスライドへの補足コメント追加等）した状態を起点に対応：①タイトルスライド末尾に発表者名の行を追加した際、直後の`---`との間に空行がなくCommonMarkのSetextヘッダーとして解釈されスライドが1枚統合されてしまうバグを発見・修正（空行を挿入し22枚構成に復元）、②`slides/開発サイクル_ポンチ絵.svg`（ユーザーがラベル文字を拡大・viewBox拡大して更新）を`images/dev_cycle.svg`に再コピーしスライド21に反映、③「衛星画像・レーダー表示アプリ」の`radar.png`・`tide_viewer.jpeg`を大幅拡大（`height:320px`→`430px`、カラム比も3fr:4frに調整して文字とのバランスを確保）、④「ml_forecast — 自宅太陽光発電量 機械学習予測」の右側画像`ml_forcast_kensyo.png`に「太陽光発電量予測の検証」のキャプションを追加。**教訓**: Markdown本文に読点を含む1行を追加する際は、直後の`---`区切りとの間に必ず空行を残すこと（ないとSetextヘッダー化してスライドが意図せず結合する） |
+| 2026-07-30 | タイトルスライドの発表者名「上原政博（沖縄気象台　WXBC個人会員）」を、通常のテキスト行（左寄せ）から `<div style="position: absolute; bottom: 40px; right: 56px; text-align: right;">` で囲んで右下配置に変更 |
+| 2026-07-30 | ユーザーが「現行モデル」「vibe coding X GitHub 私の開発スタイル」の2枚に補足コメントを追加した結果テキストが溢れたため、意味を保ったまま文字数を削減：①「現行モデル」末尾の2行の注釈ブロックを1行に集約、②「vibe coding X GitHub 私の開発スタイル」は5箇条書きを簡潔化し、右カラムに追加されていたPython_AIグループの注釈をスライド末尾の引用に統合（4行→2行）。図（`dev_cycle.svg`）表示を最優先する指示に基づき、カラム比を等分から`3fr 2fr`（画像側を広く）に変更し画像幅を`w:380`→`w:480`に拡大 |

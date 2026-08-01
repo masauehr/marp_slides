@@ -1,0 +1,152 @@
+/* @theme ml-forecast-multicolor */
+/* @auto-scaling true */
+@import 'default';
+
+:root {
+  --color-bg:      #ffffff;
+  --color-fg:      #1a1a2e;
+  --color-blue:    #2a78d6;
+  --color-orange:  #eb6834;
+  --color-aqua:    #1baf7a;
+  --color-yellow:  #eda100;
+  --color-magenta: #e87ba4;
+  --color-violet:  #4a3aa7;
+  --color-red:     #e34948;
+  --color-sub:     #64748b;
+  --color-muted:   #f5f3ff;
+  --color-border:  #e2e8f0;
+  --font-sans:     'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-mono:     'SFMono-Regular', Consolas, 'Courier New', monospace;
+}
+
+/* ベーススライド */
+section {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 20px;
+  padding: 48px 56px;
+}
+
+/* 見出し */
+h1 {
+  font-size: 2em;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-violet) 60%, var(--color-magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 4px solid var(--color-orange);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6em;
+}
+
+h2 {
+  color: var(--color-violet);
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  color: var(--color-orange);
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+}
+
+/* 表 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 0.8em 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th {
+  background: linear-gradient(90deg, var(--color-blue), var(--color-violet));
+  color: #fff;
+  padding: 6px 12px;
+  text-align: left;
+}
+
+td {
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+tr:nth-child(even) td { background: var(--color-muted); }
+
+/* コードブロック */
+code {
+  font-family: var(--font-mono);
+  background: var(--color-muted);
+  color: var(--color-violet);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+pre {
+  background: #1e1b3a;
+  color: #e2e8f0;
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 0.8em;
+  overflow: auto;
+}
+
+/* リスト */
+ul, ol {
+  padding-left: 1.4em;
+  line-height: 1.8;
+}
+
+li { margin-bottom: 0.2em; }
+li::marker { color: var(--color-orange); }
+
+/* 引用（ポイントボックス風） */
+blockquote {
+  background: #fdf2f8;
+  border-left: 4px solid var(--color-magenta);
+  padding: 10px 16px;
+  margin: 0.8em 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95em;
+  color: var(--color-fg);
+}
+
+blockquote p { margin: 0; }
+
+/* ページ番号 */
+section::after {
+  font-size: 0.65em;
+  color: var(--color-sub);
+}
+
+/* 強調テキスト */
+strong { color: var(--color-orange); }
+
+em {
+  color: var(--color-red);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* 2カラムレイアウト用 */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ダーク背景スライド用（_backgroundColor で背景色を設定した際に文字色を合わせる） */
+section[data-marpit-advanced-background] h1,
+section[style*="background-color: #1e3a8a"] h1,
+section[style*="background-color: #2563eb"] h1 {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  border-bottom-color: rgba(255,255,255,0.3);
+}
