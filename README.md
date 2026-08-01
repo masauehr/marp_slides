@@ -15,7 +15,10 @@ marp_slides/
 ├── README.md                              # このファイル（概要・クイックスタート）
 ├── MANUAL.md                              # 詳細マニュアル
 ├── themes/
-│   └── ml-forecast.css                    # カスタムテーマ（青ベース）
+│   ├── ml-forecast.css                    # カスタムテーマ（パステルカラフル/デフォルト）
+│   ├── ml-forecast-multicolor.css         # 配色バリエーション（マルチカラー）
+│   ├── ml-forecast-vivid.css              # 配色バリエーション（ビビッドグラデーション）
+│   └── samples/                           # 下記デザインパターン集のプレビュー画像
 ├── templates/
 │   ├── template.md                        # 汎用スライドテンプレート
 │   └── readme-to-slides.md                # README → 発表スライド変換用テンプレート
@@ -144,28 +147,48 @@ YYYY-MM-DD-プロジェクト名.md
 
 ---
 
-## カスタムテーマ `ml-forecast.css`
+## デザインパターン集
 
-| 要素 | スタイル |
-|------|---------|
-| 通常背景 | 白 |
-| タイトル・クロージング | 濃紺 `#1e3a8a` |
-| セクション区切り | 薄青 `#dbeafe` |
-| アクセント色 | 青 `#2563eb`（見出し・テーブルヘッダー・`**strong**`） |
-| `*em*` | 赤 `#dc2626` 太字（斜体なし） |
-| テーブル | ヘッダー青・1行おきシマ模様 |
-| コードブロック | ダーク背景 `#1e293b` |
-| blockquote | 左ボーダー付きポイントボックス |
+配色テーマと、表紙・まとめ等の全面色スライド用「ヒーロー背景」は、それぞれ独立に切り替えられる。実際のレンダリング画像は `themes/samples/` に保存済み。
 
-セクション区切りの書き方：
+### 配色テーマ（本文全体の配色）
+
+Front Matter の `theme:` 値と、変換コマンドの `--theme` パスを対応するファイルにそろえて切り替える。
+
+| テーマ名（`theme:` の値） | プレビュー | 特徴 |
+|---|---|---|
+| `ml-forecast`（デフォルト） | ![ml-forecast](themes/samples/palette-ml-forecast.png) | パステルカラフル。紫・水色・黄色・マゼンダを要素ごとに使い分け、柔らかく上品な印象 |
+| `ml-forecast-multicolor` | ![multicolor](themes/samples/palette-multicolor.png) | マルチカラー。グラデーション見出し＋グラデーションテーブルヘッダーで最も賑やか |
+| `ml-forecast-vivid` | ![vivid](themes/samples/palette-vivid.png) | ビビッドグラデーション。紫基調のシングルアクセントで華やかさと落ち着きの中間 |
 
 ```markdown
-<!-- _backgroundColor: "#dbeafe" -->
-<!-- _color: "#1e3a8a" -->
+---
+theme: ml-forecast-multicolor   ← CSSの /* @theme */ 名と一致させる
+---
+```
+```bash
+--theme themes/ml-forecast-multicolor.css   ← 上と同じテーマのCSSを指定
+```
+
+### ヒーロー背景パターン（表紙・まとめ等の全面色スライド用）
+
+`<!-- _class: hero-xxx -->` を指定するだけで切り替えられる（`_backgroundColor` / `_color` の個別指定は不要）。現時点では `ml-forecast`（デフォルト）にのみ実装済み（`ml-forecast-multicolor` / `ml-forecast-vivid` には未移植）。
+
+| クラス名 | プレビュー | 特徴 |
+|---|---|---|
+| `hero-gradient` | ![hero-gradient](themes/samples/hero-gradient.png) | メッシュ風の多色グラデーション＋グレイン質感。最も華やか（推奨） |
+| `hero-geo` | ![hero-geo](themes/samples/hero-geo.png) | 紺地に控えめな円のあしらい＋グレイン。落ち着きと遊び心の中間 |
+| `hero-side` | ![hero-side](themes/samples/hero-side.png) | 左42%だけ色ブロック、右は余白。モダンで圧迫感が少ない |
+| `hero-diagonal` | ![hero-diagonal](themes/samples/hero-diagonal.png) | 斜めのハードエッジで非対称に分割。動きのある印象 |
+
+```markdown
+<!-- _class: hero-gradient -->
 <!-- _paginate: false -->
 
-# セクションタイトル
+# タイトル
 ```
+
+> **注意**: `--pptx-editable`（LibreOffice経由の編集可能PPTX）は複雑な背景（多重`background-image`・グレイン等）を正しく再構築できず崩れることがある。通常の `--pptx` / `--pdf`（Chromiumスクリーンショット方式）は影響を受けない。対処法は [MANUAL.md](MANUAL.md) の「編集可能な PPTX を作る」を参照。
 
 ---
 
@@ -219,3 +242,4 @@ VS Code 拡張版でも `.vscode/settings.json` の `markdown.marp.pptx.editable
 | 2026-06-30 | `VSCODE-MARP.md` を追加。VS Code + Marp 拡張だけでの PDF/PPTX 生成手順をまとめた |
 | 2026-07-01 | MANUAL.md に「PPTX の編集可否について」を追加。Marp の PPTX がテキスト編集不可（画像焼き込み）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |
 | 2026-07-02 | README.md に「PPTX の編集可否について」セクションを追加。実験的オプション `--pptx-editable`（要 LibreOffice）で編集可能な PPTX が生成できることを記載し、詳細は MANUAL.md を参照する形に整理 |
+| 2026-08-01 | 「カスタムテーマ `ml-forecast.css`」セクションを「デザインパターン集」に刷新。配色テーマ3種（`ml-forecast`/`ml-forecast-multicolor`/`ml-forecast-vivid`）とヒーロー背景4種（`hero-gradient`/`hero-geo`/`hero-side`/`hero-diagonal`）を、`themes/samples/` に保存した実レンダリング画像つきで一覧化し、視覚的に選べるようにした |
