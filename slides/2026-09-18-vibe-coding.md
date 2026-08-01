@@ -4,8 +4,7 @@ theme: ml-forecast
 paginate: true
 ---
 
-<!-- _backgroundColor: "#1e3a8a" -->
-<!-- _color: "#ffffff" -->
+<!-- _class: hero-gradient -->
 <!-- _paginate: false -->
 
 # 気象データ×生成AI
@@ -421,8 +420,7 @@ GitHub: https://github.com/masauehr/jma-mcp
 
 ---
 
-<!-- _backgroundColor: "#1e3a8a" -->
-<!-- _color: "#ffffff" -->
+<!-- _class: hero-gradient -->
 <!-- _paginate: false -->
 
 # まとめ・今後の展開
