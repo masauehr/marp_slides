@@ -428,6 +428,8 @@ GitHub: https://github.com/masauehr/jma-mcp
 
 > 自然言語でコード生成 → 毎回マニュアル化 → GitHubへ自動push・定時実行 → アプリ高度化・バグ修正、が①に戻ってつながることで、開発が止まらず続いていく
 
+参考: 「[Claude Codeですべての日常業務を爆速化しよう！](https://qiita.com/minorun365/items/114f53def8cb0db60f47)」（@minorun365, Qiita）― 3月にClaude Codeを使い始めた際の最初の参考資料
+
 ---
 
 <!-- _class: hero-gradient -->
