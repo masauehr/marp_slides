@@ -401,7 +401,7 @@ GitHub: https://github.com/masauehr/jma-mcp
 <div class="cols" style="grid-template-columns: 3fr 2fr;">
 <div style="text-align: center;">
 
-![w:480](../images/dev_cycle.svg)
+![w:540](../images/dev_cycle.svg)
 
 </div>
 <div>
@@ -409,14 +409,14 @@ GitHub: https://github.com/masauehr/jma-mcp
 - プログラミングを少しかじった程度で、専門知識はない
 - WXBC「アメダス気象データ分析チャレンジ」でPython・機械学習を学んだ
 - 生成AIによるプログラミングも同時期に始め、二つの学びが結びついた
-- 今年3月からClaude Code × GitHubで、AIに任せてアイデアを形にするスタイルが定着
-- コードを完全に理解しなくても「動くもの」を作りながら学べる
+- 作業フォルダにコード・マニュアルを蓄積しながら開発するスタイルが定着
+- GitHubへ自動push・定時実行でスマホから日々確認し、気づきを次の開発に活かす
 
-</div>
-</div>
-
-> 開発コミュニティも重要 ― 職場の任意の集まりPython_AIグループで日々情報交換。WXBCでもSlackで共有していきたい。
+> フォルダに蓄積されたコード・マニュアルを読むから、「続きから」で開発を再開できる
 > このプレゼンもバイブコーディングで自動作成。学習目的ならAIに解説させながら開発する方が向く
+
+</div>
+</div>
 
 ---
 

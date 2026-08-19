@@ -1,0 +1,72 @@
+<svg width="920" height="450" viewBox="0 0 920 450" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>案C：自然言語指示からGitHub公開・次回作業まで一直線に進み、大きなループバック矢印で最初に戻るタイムライン型サイクル</title>
+<desc>自然言語で指示して試作品を高速に作る、その過程を都度マニュアル化する、コードとマニュアルをGitHubにpushして成果物を公開・閲覧する、次回はフォルダを読み込んで続きから作業する、という4工程を横一列のカードで示し、4番目のカードから1番目のカードへ大きく戻る矢印と「だからプロンプト不要」という説明文で、フォルダを読み込むからこそ次の自然言語指示がすぐできるという因果関係を明示した図。</desc>
+<defs>
+<marker id="arrowC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3d3d3a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="arrowCKey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<rect x="0" y="0" width="920" height="450" fill="#ffffff"/>
+
+<!-- カード間の矢印 -->
+<path d="M200,165 L258,165" fill="none" stroke="#3d3d3a" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrowC)"/>
+<path d="M430,165 L488,165" fill="none" stroke="#3d3d3a" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrowC)"/>
+<path d="M660,165 L718,165" fill="none" stroke="#3d3d3a" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrowC)"/>
+
+<!-- 4→1 ループバック矢印（因果関係を強調） -->
+<path d="M805,270 Q805,362 460,362 Q115,362 115,270" fill="none" stroke="#4a3aa7" stroke-width="3" stroke-linecap="round" marker-end="url(#arrowCKey)"/>
+<text x="460" y="392" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#4a3aa7">だからプロンプト不要</text>
+<text x="460" y="416" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#5F5E5A">フォルダを読み込んで、次回はここから続きが始まる</text>
+
+<!-- 1. 自然言語で指示 -->
+<rect x="30" y="80" width="170" height="190" rx="18" fill="#E3F7EE" stroke="#1baf7a" stroke-width="1"/>
+<g transform="translate(115,135)">
+<path d="M-26,-18 Q-30,-18 -30,-14 L-30,4 Q-30,8 -26,8 L-12,8 L-4,20 L0,8 L26,8 Q30,8 30,4 L30,-14 Q30,-18 26,-18 Z" fill="#3d3d3a"/>
+<path d="M-14,-8 L-20,-3 L-14,2" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2,-11 L-2,7" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M10,-8 L16,-3 L10,2" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="115" y="205" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#0B6B49">自然言語で指示</text>
+<text x="115" y="232" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#128F63">試作品を高速に作成</text>
+<text x="115" y="252" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#128F63">（コード知識不要）</text>
+
+<!-- 2. 都度マニュアル化 -->
+<rect x="260" y="80" width="170" height="190" rx="18" fill="#FCEFD6" stroke="#eda100" stroke-width="1"/>
+<g transform="translate(345,135)">
+<rect x="-17" y="-23" width="34" height="44" rx="3" fill="#3d3d3a"/>
+<line x1="-9.5" y1="-11" x2="9.5" y2="-11" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+<line x1="-9.5" y1="-3" x2="9.5" y2="-3" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+<line x1="-9.5" y1="5" x2="3" y2="5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+<path d="M4,19 L21,2" stroke="#3d3d3a" stroke-width="5.5" stroke-linecap="round"/>
+<path d="M21,2 L26,-3 L22,-7 L17,-2 Z" fill="#3d3d3a"/>
+</g>
+<text x="345" y="205" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#7A5200">都度マニュアル化</text>
+<text x="345" y="232" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#B37600">AIになら気兼ねなく</text>
+<text x="345" y="252" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#B37600">指示できる</text>
+
+<!-- 3. GitHubへpush -->
+<rect x="490" y="80" width="170" height="190" rx="18" fill="#E3EEFB" stroke="#2a78d6" stroke-width="1"/>
+<g transform="translate(575,135)">
+<path d="M-27,7 Q-33,-6 -17,-8 Q-13,-19 2,-17 Q14,-25 23,-14 Q35,-14 33,0 Q39,10 27,12 L-23,12 Q-31,12 -27,7 Z" fill="#3d3d3a"/>
+<path d="M0,-4 L0,10 M-5.5,2 L0,-4 L5.5,2" fill="none" stroke="#E3EEFB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="575" y="205" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="700" fill="#1B4A82">GitHubへpush</text>
+<text x="575" y="232" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#2a78d6">アプリ・記事・</text>
+<text x="575" y="252" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#2a78d6">グラフ等の成果物</text>
+
+<!-- 4. フォルダを読込 -->
+<rect x="720" y="80" width="170" height="190" rx="18" fill="#ECE9FB" stroke="#4a3aa7" stroke-width="1"/>
+<g transform="translate(805,135)">
+<rect x="-29" y="-4" width="58" height="31" rx="4" fill="#3d3d3a"/>
+<path d="M-29,-4 L-29,-13 Q-29,-15 -27,-15 L-6,-15 Q-3,-15 -1,-12 L3,-6 L-29,-6 Z" fill="#3d3d3a"/>
+<path d="M0,-26 L0,-9 M-6,-15 L0,-9 L6,-15" fill="none" stroke="#3d3d3a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="805" y="205" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#3C3489">フォルダを読込</text>
+<text x="805" y="232" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#4a3aa7">コード+マニュアル</text>
+<text x="805" y="252" text-anchor="middle" font-family="sans-serif" font-size="14.5" fill="#4a3aa7">で指示を省略</text>
+
+<text x="115" y="298" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5F5E5A">①</text>
+<text x="345" y="298" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5F5E5A">②</text>
+<text x="575" y="298" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5F5E5A">③</text>
+<text x="805" y="298" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#5F5E5A">④</text>
+</svg>
