@@ -430,6 +430,8 @@ GitHub: https://github.com/masauehr/jma-mcp
 
 参考: 「[Claude Codeですべての日常業務を爆速化しよう！](https://qiita.com/minorun365/items/114f53def8cb0db60f47)」（@minorun365, Qiita）― 3月にClaude Codeを使い始めた際の最初の参考資料
 
+URL: https://qiita.com/minorun365/items/114f53def8cb0db60f47
+
 ---
 
 <!-- _class: hero-gradient -->
