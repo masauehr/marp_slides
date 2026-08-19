@@ -1,7 +1,8 @@
 # marp_slides — Markdown → スライド自動生成
 
 > 詳しくは [MANUAL.md](MANUAL.md) を参照  
-> VS Code + Marp だけで使う場合は [VSCODE-MARP.md](VSCODE-MARP.md) を参照
+> VS Code + Marp だけで使う場合は [VSCODE-MARP.md](VSCODE-MARP.md) を参照  
+> 📌 **Claude Codeでの開発スタイルまとめ** → [slides/2026-08-19-claude-code-dev-style.md](slides/2026-08-19-claude-code-dev-style.md)
 
 Marp を使って Markdown ファイルから PPTX・PDF・HTML を生成するプロジェクト。  
 **Claude Code と組み合わせることで、資料の構成・作成・変換をすべて自動化できる。**
@@ -147,6 +148,28 @@ YYYY-MM-DD-プロジェクト名.md
 
 ---
 
+## 作成したスライド一覧
+
+`slides/` 配下で実際に作成したスライドの一覧。変換オプション等の詳細は [MANUAL.md](MANUAL.md) の「作成済みスライド一覧と変換オプション」を参照。
+
+| スライド | 内容 | 形式 |
+|---|---|---|
+| [2026-09-18-vibe-coding.md](slides/2026-09-18-vibe-coding.md) | 気象データ×生成AI ― バイブコーディング実践記（WXBC人材育成WG全体会合 話題提供） | PDF / PPTX（editable、3配色） |
+| [2026-07-01-ai-projects-intro.md](slides/2026-07-01-ai-projects-intro.md) | Claude Codeを活用した気象データ分析・予測モデルの開発紹介（出力名 `uehara_ai`） | PDF / PPTX（editable） |
+| [2026-07-01-ai-projects-intro-note.md](slides/2026-07-01-ai-projects-intro-note.md) | 上記のnote.com投稿用原稿（Marp変換対象外） | Markdownのみ |
+| [tenkizu_readme.md](slides/tenkizu_readme.md) | tenkizu ― 天気図作成ツール（GSM / ECMWF）紹介 | PDF / PPTX |
+| [jma_mcp.md](slides/jma_mcp.md) | jma-mcp ― 気象庁天気予報 MCP サーバー紹介 | PPTX |
+| [2026-06-ml-forecast.md](slides/2026-06-ml-forecast.md) | ml_forecast 月次発表スライド（2026-06） | PDF / PPTX |
+| [2026-06-30-ml-forecast.md](slides/2026-06-30-ml-forecast.md) | ml_forecast 状況レポート（2026-06-30） | PDF / PPTX |
+| [2026-06-30-marp-introduction.md](slides/2026-06-30-marp-introduction.md) | Marp × Claude Code 入門スライド | PDF / PPTX |
+
+### 📌 参考ドキュメント（スライドではないが関連する重要ファイル）
+
+> **[Claude Codeでの開発スタイルまとめ（作業フォルダを軸にした開発サイクル）](slides/2026-08-19-claude-code-dev-style.md)**  
+> スライド化する前に開発スタイルそのものを言語化した参考ドキュメント。`2026-09-18-vibe-coding.md` スライド21・22（ポンチ絵「Claude開発サイクル」と「この開発サイクルのポイント」）の元になった内容。
+
+---
+
 ## デザインパターン集
 
 配色テーマと、表紙・まとめ等の全面色スライド用「ヒーロー背景」は、それぞれ独立に切り替えられる。実際のレンダリング画像は `themes/samples/` に保存済み。
@@ -243,3 +266,4 @@ VS Code 拡張版でも `.vscode/settings.json` の `markdown.marp.pptx.editable
 | 2026-07-01 | MANUAL.md に「PPTX の編集可否について」を追加。Marp の PPTX がテキスト編集不可（画像焼き込み）であることと、編集可能な代替ツール（ppt_auto / Pandoc）との比較表を記載 |
 | 2026-07-02 | README.md に「PPTX の編集可否について」セクションを追加。実験的オプション `--pptx-editable`（要 LibreOffice）で編集可能な PPTX が生成できることを記載し、詳細は MANUAL.md を参照する形に整理 |
 | 2026-08-01 | 「カスタムテーマ `ml-forecast.css`」セクションを「デザインパターン集」に刷新。配色テーマ3種（`ml-forecast`/`ml-forecast-multicolor`/`ml-forecast-vivid`）とヒーロー背景4種（`hero-gradient`/`hero-geo`/`hero-side`/`hero-diagonal`）を、`themes/samples/` に保存した実レンダリング画像つきで一覧化し、視覚的に選べるようにした |
+| 2026-08-19 | 「作成したスライド一覧」セクションを新設し、`slides/` 配下の全スライド`.md`へのリンクと内容・形式を一覧化。あわせて `slides/2026-08-19-claude-code-dev-style.md`（Claude Codeでの開発スタイルまとめ）を冒頭の案内ブロックと一覧内の「参考ドキュメント」に強調表示し、目立つようリンクを追加 |
