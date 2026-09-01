@@ -55,3 +55,7 @@ GitHubにpush・公開するのは、エージェントが自動化処理した�
 - ポンチ絵: `slides/Claude開発サイクル_ポンチ絵.svg`（`images/dev_cycle.svg` としてスライドに埋め込み）
 - 反映先スライド: `slides/2026-09-18-vibe-coding.md`（スライド21「vibe coding X GitHub 私の開発スタイル」）
 - 検討過程で作成した別案: `slides/Claude開発サイクル_案A_リング型.svg`、`slides/Claude開発サイクル_案C_タイムライン型.svg`
+- 「バイブコーディングとは」セクション全体（言葉の由来・私の開発スタイル・開発サイクルのポイント）を1枚にまとめたインフォグラフィック
+  - Sonnet作成（SVG）: `slides/バイブコーディングとは_まとめ.svg`
+  - Opus作成（SVG、比較用）: `slides/バイブコーディングとは_まとめ_opus.svg`
+  - Sonnet作成（HTML、Marpを離れた独立版）: `slides/vibe-coding-session.html` ／ 公開ページ: <https://masauehr.github.io/vibe-coding-session/>
