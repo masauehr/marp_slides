@@ -13,3 +13,6 @@ npm-debug.log*
 
 # Office 一時ファイル
 ~$*
+
+# Claude Code ローカル設定・エージェントworktree
+.claude/
