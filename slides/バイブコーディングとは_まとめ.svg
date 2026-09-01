@@ -1,0 +1,168 @@
+<svg width="1080" height="1740" viewBox="0 0 1080 1740" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>バイブコーディングとは ― 言葉の由来・私の開発スタイル・開発サイクルのポイントをまとめた1枚インフォグラフィック</title>
+<desc>vibe codingという言葉の由来（2025年2月Andrej Karpathy氏がXで提唱、個人の週末プロジェクト向けとして紹介）、作業フォルダを軸にした私の開発スタイル（自然言語でコード生成・毎回マニュアル化・GitHubへ自動push・アプリ高度化の循環サイクル）、この開発サイクルのポイント（プロンプトが不要な理由・GitHubで見るもの・バイブコーディングとしての強み）を、イラストとアイコンとともに1枚にまとめた図。</desc>
+
+<defs>
+<linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+  <stop offset="0%" stop-color="#3a2350"/>
+  <stop offset="45%" stop-color="#2d2f7a"/>
+  <stop offset="100%" stop-color="#1e3a8a"/>
+</linearGradient>
+<marker id="posterArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3d3d3a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<rect x="0" y="0" width="1080" height="1740" fill="#fffdf9"/>
+
+<!-- ヘッダー -->
+<rect x="0" y="0" width="1080" height="170" fill="url(#headerGrad)"/>
+<text x="540" y="88" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="#ffffff">バイブコーディングとは</text>
+<text x="540" y="128" text-anchor="middle" font-family="sans-serif" font-size="19" fill="#d8d3ea" letter-spacing="2">— V I B E   C O D I N G —</text>
+
+<!-- ============ セクション1：言葉の由来 ============ -->
+<text x="60" y="242" font-family="sans-serif" font-size="15" font-weight="700" fill="#1baf7a" letter-spacing="3">01</text>
+<text x="60" y="278" font-family="sans-serif" font-size="30" font-weight="700" fill="#085041">「vibe coding」という言葉の由来</text>
+<rect x="60" y="292" width="90" height="4" rx="2" fill="#1baf7a"/>
+
+<!-- イラスト：ヘッドホンで寛ぎながらノートPCを打つ人 -->
+<g transform="translate(175,410)">
+  <path d="M-30,-38 A30,30 0 0 1 30,-38" fill="none" stroke="#3d3d3a" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="-30" cy="-36" r="9" fill="#3d3d3a"/>
+  <circle cx="30" cy="-36" r="9" fill="#3d3d3a"/>
+  <circle cx="0" cy="-46" r="26" fill="#3d3d3a"/>
+  <path d="M-34,20 Q-34,-24 0,-24 Q34,-24 34,20 Z" fill="#3d3d3a"/>
+  <rect x="-30" y="46" width="60" height="7" rx="2" fill="#3d3d3a"/>
+  <path d="M-26,18 L26,18 L22,46 L-22,46 Z" fill="#3d3d3a"/>
+  <rect x="-18" y="22" width="36" height="20" rx="2" fill="#ffffff"/>
+  <rect x="-14" y="26" width="28" height="12" rx="1" fill="#E3F7EE"/>
+  <path d="M46,-70 Q56,-60 46,-50" fill="none" stroke="#1baf7a" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <path d="M56,-80 Q74,-60 56,-40" fill="none" stroke="#1baf7a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <path d="M66,-90 Q92,-60 66,-30" fill="none" stroke="#1baf7a" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+</g>
+
+<!-- 由来の箇条書き -->
+<g font-family="sans-serif" font-size="18.5" fill="#333333">
+<text x="330" y="330"><tspan font-size="20" fill="#1baf7a">●</tspan> <tspan dx="6">2025年2月、AI研究者アンドレイ・カルパシー氏</tspan></text>
+<text x="352" y="358">（元Tesla AI責任者・OpenAI共同創業者）がXで提唱</text>
+<text x="330" y="398"><tspan font-size="20" fill="#1baf7a">●</tspan> <tspan dx="6">日本では通常そのまま「バイブコーディング」と呼ば</tspan></text>
+<text x="352" y="426">れる。vibe ＝「雰囲気」「ノリ」</text>
+<text x="330" y="466"><tspan font-size="20" fill="#1baf7a">●</tspan> <tspan dx="6">見て・言って・動かして・貼り付ける、を繰り返し、</tspan></text>
+<text x="352" y="494">アイデアを素早く形にするのが得意</text>
+<text x="330" y="534"><tspan font-size="20" fill="#1baf7a">●</tspan> <tspan dx="6">提唱者本人は当初「使い捨ての週末プロジェクト</tspan></text>
+<text x="352" y="562">向け」と明言</text>
+</g>
+
+<!-- 引用 -->
+<rect x="60" y="588" width="960" height="86" rx="8" fill="#f1f5f9" stroke="#2563eb" stroke-width="0" />
+<rect x="60" y="588" width="5" height="86" fill="#2563eb"/>
+<text x="82" y="618" font-family="Georgia, serif" font-size="16.5" fill="#334155">"There's a new kind of coding I call <tspan font-weight="700">'vibe coding'</tspan>, where you fully give in to the</text>
+<text x="82" y="640" font-family="Georgia, serif" font-size="16.5" fill="#334155">vibes, embrace exponentials, and forget that the code even exists."</text>
+<text x="82" y="664" font-family="sans-serif" font-size="15" fill="#64748b">— Andrej Karpathy（2025/2/2）</text>
+
+<!-- タグ -->
+<rect x="60" y="698" width="200" height="46" rx="23" fill="#E3F7EE" stroke="#1baf7a" stroke-width="1.2"/>
+<text x="160" y="727" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#0B6B49">個人開発と好相性</text>
+<rect x="274" y="698" width="300" height="46" rx="23" fill="#FCEFD6" stroke="#eda100" stroke-width="1.2"/>
+<text x="424" y="727" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#7A5200">企業でも活用（要：人によるテスト）</text>
+
+<!-- 区切り線 -->
+<line x1="60" y1="792" x2="1020" y2="792" stroke="#ece7e0" stroke-width="2"/>
+
+<!-- ============ セクション2：私の開発スタイル ============ -->
+<text x="60" y="852" font-family="sans-serif" font-size="15" font-weight="700" fill="#2a78d6" letter-spacing="3">02</text>
+<text x="60" y="888" font-family="sans-serif" font-size="30" font-weight="700" fill="#1B4A82">vibe coding × GitHub 私の開発スタイル</text>
+<rect x="60" y="902" width="90" height="4" rx="2" fill="#2a78d6"/>
+
+<!-- ミニ循環サイクル図 -->
+<g transform="translate(230,1035)">
+  <path d="M40,-58 Q95,-50 108,4" fill="none" stroke="#3d3d3a" stroke-width="1.8" stroke-dasharray="1 6" marker-end="url(#posterArrow)" opacity="0.7"/>
+  <path d="M108,58 Q95,112 40,120" fill="none" stroke="#3d3d3a" stroke-width="1.8" stroke-dasharray="1 6" marker-end="url(#posterArrow)" opacity="0.7"/>
+  <path d="M-40,120 Q-95,112 -108,58" fill="none" stroke="#3d3d3a" stroke-width="1.8" stroke-dasharray="1 6" marker-end="url(#posterArrow)" opacity="0.7"/>
+  <path d="M-108,4 Q-95,-50 -40,-58" fill="none" stroke="#3d3d3a" stroke-width="1.8" stroke-dasharray="1 6" marker-end="url(#posterArrow)" opacity="0.7"/>
+
+  <circle cx="0" cy="31" r="46" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.6"/>
+  <g transform="translate(0,20) scale(0.75)">
+    <rect x="-30" y="-4" width="60" height="32" rx="4" fill="#3d3d3a"/>
+    <path d="M-30,-4 L-30,-14 Q-30,-16 -28,-16 L-6,-16 Q-3,-16 -1,-13 L3,-6 L-30,-6 Z" fill="#3d3d3a"/>
+    <rect x="-24" y="2" width="48" height="20" rx="2" fill="#ffffff"/>
+  </g>
+  <text x="0" y="64" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#5F5E5A">作業フォルダ</text>
+
+  <circle cx="0" cy="-62" r="42" fill="#E3F7EE" stroke="#1baf7a" stroke-width="0.5"/>
+  <g transform="translate(0,-62) scale(0.62)">
+    <path d="M-26,-18 Q-30,-18 -30,-14 L-30,4 Q-30,8 -26,8 L-12,8 L-4,20 L0,8 L26,8 Q30,8 30,4 L30,-14 Q30,-18 26,-18 Z" fill="#3d3d3a"/>
+  </g>
+  <text x="0" y="-108" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#0B6B49">①コード生成</text>
+
+  <circle cx="124" cy="31" r="42" fill="#FCEFD6" stroke="#eda100" stroke-width="0.5"/>
+  <g transform="translate(124,31) scale(0.5)">
+    <rect x="-17" y="-23" width="34" height="44" rx="3" fill="#3d3d3a"/>
+    <path d="M4,19 L21,2" stroke="#3d3d3a" stroke-width="5.5" stroke-linecap="round"/>
+  </g>
+  <text x="124" y="86" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#7A5200">②マニュアル化</text>
+
+  <circle cx="0" cy="124" r="42" fill="#E3EEFB" stroke="#2a78d6" stroke-width="0.5"/>
+  <g transform="translate(0,124) scale(0.55)">
+    <path d="M-25,7 Q-30,-5 -16,-7 Q-13,-18 2,-16 Q13,-23 21,-13 Q32,-13 30,0 Q36,9 25,11 L-21,11 Q-28,11 -25,7 Z" fill="#3d3d3a"/>
+    <path d="M0,-4 L0,9 M-5,2 L0,-4 L5,2" fill="none" stroke="#E3EEFB" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="0" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#1B4A82">③GitHubへ自動push</text>
+
+  <circle cx="-124" cy="31" r="42" fill="#ECE9FB" stroke="#4a3aa7" stroke-width="0.5"/>
+  <g transform="translate(-124,31) scale(0.55)">
+    <path d="M-14,-18 Q0,-27 18,-13" fill="none" stroke="#3d3d3a" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M18,4 Q9,22 -12,18" fill="none" stroke="#3d3d3a" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+  <text x="-124" y="86" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#3C3489">④アプリ高度化</text>
+</g>
+
+<!-- スタイルの箇条書き -->
+<g font-family="sans-serif" font-size="18.5" fill="#333333">
+<text x="470" y="960"><tspan font-size="20" fill="#2a78d6">●</tspan> <tspan dx="6">プログラミングを少しかじった程度で、専門</tspan></text>
+<text x="492" y="988">知識はない</text>
+<text x="470" y="1028"><tspan font-size="20" fill="#2a78d6">●</tspan> <tspan dx="6">WXBC「アメダス気象データ分析チャレンジ」</tspan></text>
+<text x="492" y="1056">でPython・機械学習を学んだ</text>
+<text x="470" y="1096"><tspan font-size="20" fill="#2a78d6">●</tspan> <tspan dx="6">作業フォルダにコード・マニュアルを蓄積し</tspan></text>
+<text x="492" y="1124">ながら開発するスタイルが定着</text>
+<text x="470" y="1164"><tspan font-size="20" fill="#2a78d6">●</tspan> <tspan dx="6">GitHubへ自動push・定時実行でスマホから</tspan></text>
+<text x="492" y="1192">日々確認し、気づきを次の開発に活かす</text>
+</g>
+
+<rect x="60" y="1224" width="960" height="52" rx="8" fill="#eaf6f0"/>
+<text x="80" y="1256" font-family="sans-serif" font-size="16.5" fill="#0B6B49">フォルダに蓄積されたコード・マニュアルを読むから、「続きから」で開発を再開できる</text>
+
+<!-- 区切り線 -->
+<line x1="60" y1="1310" x2="1020" y2="1310" stroke="#ece7e0" stroke-width="2"/>
+
+<!-- ============ セクション3：開発サイクルのポイント ============ -->
+<text x="60" y="1362" font-family="sans-serif" font-size="15" font-weight="700" fill="#4a3aa7" letter-spacing="3">03</text>
+<text x="60" y="1398" font-family="sans-serif" font-size="30" font-weight="700" fill="#3C3489">この開発サイクルのポイント</text>
+<rect x="60" y="1412" width="90" height="4" rx="2" fill="#4a3aa7"/>
+
+<!-- ポイント1：電球 -->
+<g transform="translate(100,1462)">
+  <circle cx="0" cy="-6" r="22" fill="#FCEFD6" stroke="#eda100" stroke-width="1.5"/>
+  <path d="M-4,10 L4,10 L4,16 L-4,16 Z" fill="#B37600"/>
+  <line x1="-3" y1="18" x2="3" y2="18" stroke="#B37600" stroke-width="2" stroke-linecap="round"/>
+</g>
+<text x="150" y="1456" font-family="sans-serif" font-size="18.5" font-weight="700" fill="#7A5200">なぜプロンプト不要？</text>
+<text x="150" y="1482" font-family="sans-serif" font-size="16" fill="#555">コード・マニュアル・ルールをフォルダに置くとAIが自動で読込む</text>
+
+<!-- ポイント2：クラウド -->
+<g transform="translate(100,1534) scale(0.85)">
+  <path d="M-25,7 Q-30,-5 -16,-7 Q-13,-18 2,-16 Q13,-23 21,-13 Q32,-13 30,0 Q36,9 25,11 L-21,11 Q-28,11 -25,7 Z" fill="#3d3d3a"/>
+</g>
+<text x="150" y="1528" font-family="sans-serif" font-size="18.5" font-weight="700" fill="#1B4A82">GitHubで見るもの</text>
+<text x="150" y="1554" font-family="sans-serif" font-size="16" fill="#555">コードそのものではなく、自動化処理した成果物（アプリ・記事・グラフ・検証結果）</text>
+
+<!-- ポイント3：稲妻 -->
+<g transform="translate(100,1606)">
+  <path d="M6,-22 L-14,4 L-2,4 L-6,22 L16,-6 L4,-6 Z" fill="#4a3aa7"/>
+</g>
+<text x="150" y="1600" font-family="sans-serif" font-size="18.5" font-weight="700" fill="#3C3489">バイブコーディングの強み</text>
+<text x="150" y="1626" font-family="sans-serif" font-size="16" fill="#555">試作品の高速開発に向く。コード知識不要で「動くもの」を作りながら学べる</text>
+
+<!-- 締めのタグライン -->
+<rect x="60" y="1664" width="960" height="46" rx="23" fill="#2d2f7a"/>
+<text x="540" y="1693" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#ffffff">①コード生成 → ②マニュアル化 → ③自動push → ④高度化 → ①へ戻り、開発が止まらず続く</text>
+
+</svg>
