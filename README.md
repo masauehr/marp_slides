@@ -22,7 +22,10 @@ marp_slides/
 │   └── samples/                           # 下記デザインパターン集のプレビュー画像
 ├── templates/
 │   ├── template.md                        # 汎用スライドテンプレート
-│   └── readme-to-slides.md                # README → 発表スライド変換用テンプレート
+│   ├── readme-to-slides.md                # README → 発表スライド変換用テンプレート
+│   └── reference-ja.docx                  # md→Word 変換用の日本語フォント定義（游ゴシック）
+├── scripts/
+│   └── md2docx.sh                         # Markdown → Word(.docx) 変換（pandoc）
 └── slides/
     ├── 2026-06-30-ml-forecast.md          # ml_forecast 状況レポート（2026-06-30）
     ├── 2026-06-30-ml-forecast.pdf         # 変換済み PDF
@@ -41,6 +44,18 @@ marp_slides/
 | VS Code + Marp 拡張のみ | CLI 不要・手軽に変換したい | [VSCODE-MARP.md](VSCODE-MARP.md) |
 | Marp CLI（npx） | ローカル画像を確実に埋め込みたい・自動化したい | [MANUAL.md](MANUAL.md) |
 | Claude Code と連携 | 構成・執筆・変換を一括自動化したい | [MANUAL.md](MANUAL.md) |
+| Markdown → Word（.docx） | スライドではなく原稿・記事・報告書を Word で欲しい | [MANUAL.md](MANUAL.md#markdown-から-worddocx-を生成する) |
+
+### Markdown から Word（.docx）を作る場合
+
+スライドではなく読み物（原稿案・寄稿記事・報告書）が欲しいときは pandoc で変換する。
+
+```bash
+scripts/md2docx.sh slides/2026-09-18-vibe-coding-article.md --pdf
+```
+
+`.svg` 図の PNG 変換・日本語フォント適用・目次付けまで [`scripts/md2docx.sh`](scripts/md2docx.sh) が行う。
+詳細 → [MANUAL.md](MANUAL.md#markdown-から-worddocx-を生成する)
 
 ### VS Code + Marp 拡張だけで使う場合
 
@@ -267,3 +282,4 @@ VS Code 拡張版でも `.vscode/settings.json` の `markdown.marp.pptx.editable
 | 2026-07-02 | README.md に「PPTX の編集可否について」セクションを追加。実験的オプション `--pptx-editable`（要 LibreOffice）で編集可能な PPTX が生成できることを記載し、詳細は MANUAL.md を参照する形に整理 |
 | 2026-08-01 | 「カスタムテーマ `ml-forecast.css`」セクションを「デザインパターン集」に刷新。配色テーマ3種（`ml-forecast`/`ml-forecast-multicolor`/`ml-forecast-vivid`）とヒーロー背景4種（`hero-gradient`/`hero-geo`/`hero-side`/`hero-diagonal`）を、`themes/samples/` に保存した実レンダリング画像つきで一覧化し、視覚的に選べるようにした |
 | 2026-08-19 | 「作成したスライド一覧」セクションを新設し、`slides/` 配下の全スライド`.md`へのリンクと内容・形式を一覧化。あわせて `slides/2026-08-19-claude-code-dev-style.md`（Claude Codeでの開発スタイルまとめ）を冒頭の案内ブロックと一覧内の「参考ドキュメント」に強調表示し、目立つようリンクを追加 |
+| 2026-09-04 | Markdown → Word（.docx）変換を追加。`scripts/md2docx.sh`（pandoc ベース、`.svg`→PNG 自動変換・日本語フォント適用・目次付け）と `templates/reference-ja.docx` を新設。`slides/2026-09-18-vibe-coding-article.md`（バイブコーディング実践記の寄稿記事風 原稿案）を作成し docx 化。詳細は MANUAL.md に「Markdown から Word（.docx）を生成する」を追記 |

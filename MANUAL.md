@@ -570,6 +570,89 @@ npx @marp-team/marp-cli slides/2026-06-ml-forecast.md \
 
 ---
 
+## Markdown から Word（.docx）を生成する
+
+スライドではなく「原稿・記事・報告書」を Word で欲しい場合は、Marp ではなく
+**pandoc** で Markdown → `.docx` に変換する。スライド用 `.md` とは別に、
+見出し（`#`）＋地の文＋図表で書いた「原稿用 `.md`」を用意するのが基本。
+
+### 前提ツール
+
+| ツール | 用途 | 導入 |
+|--------|------|------|
+| `pandoc` | Markdown → docx 変換（必須） | `brew install pandoc` |
+| `soffice`（LibreOffice） | `.svg` 図の PNG 変換・確認用 PDF 出力 | `brew install --cask libreoffice` |
+
+### 変換スクリプト
+
+[`scripts/md2docx.sh`](scripts/md2docx.sh) が一連の処理をまとめている。
+
+```bash
+# 基本（slides/xxx.md → slides/xxx.docx）
+scripts/md2docx.sh slides/2026-09-18-vibe-coding-article.md
+
+# 確認用 PDF も一緒に出す
+scripts/md2docx.sh slides/2026-09-18-vibe-coding-article.md --pdf
+
+# 目次なし／出力先を指定
+scripts/md2docx.sh slides/foo.md docs/foo.docx --no-toc
+```
+
+スクリプトがやること:
+
+1. `.md` 内の `.svg` 画像参照を検出し、`soffice` で同じ場所に `.png` を生成
+   （既に新しい `.png` があればスキップ）
+2. `.svg` 参照を `.png` に差し替えた一時 Markdown を作成
+3. `pandoc` で `.docx` に変換
+   - `--reference-doc=templates/reference-ja.docx`（日本語フォント＝游ゴシックを適用）
+   - 既定で先頭に目次（`--toc`、見出しレベル2まで、タイトル「目次」）
+   - `--resource-path` に `.md` のディレクトリ・親・リポジトリ直下・`images/` を渡すので
+     `../images/xxx.png` のような相対パスもそのまま解決される
+4. `--pdf` 指定時は `soffice` で確認用 PDF も出力
+
+### 原稿用 Markdown の書き方
+
+- Marp の Front Matter（`marp: true` など）や `<!-- _class: ... -->` は不要
+- スライドの `---`（改ページ）は使わず、`#` / `##` / `###` の見出しで構成する
+- 画像は Markdown 記法で。幅は属性で指定できる（pandoc 拡張）
+
+```markdown
+## 見出し
+
+本文の段落。スライドの箇条書きを地の文に言い換えると読み物になる。
+
+![図のキャプション](../images/dev_cycle.png){width=55%}
+
+| 項目 | 値 |
+|------|----|
+| A    | 1  |
+```
+
+- 表はそのまま Word の表になる
+- `> 引用` は引用スタイルになる
+- リンク `[表示文字](URL)` はハイパーリンクになる
+
+### 注意点
+
+- **目次のページ番号**: pandoc が入れる目次はフィールド。Word で開いたあと
+  目次を右クリック →「フィールドの更新」でページ番号が入る（PDF プレビューでは空に見える）
+- **フォントを変えたい**: `templates/reference-ja.docx` を Word で開いてスタイル
+  （標準・見出し1〜）のフォントを変更して上書き保存すれば、以降の変換に反映される。
+  作り直す場合は `pandoc --print-default-data-file reference.docx` を元に
+  `word/theme/theme1.xml` の `script="Jpan"` のフォント名を差し替える
+- **SVG を直接 docx に入れない**: Word は SVG 埋め込みが不安定なため、必ず PNG 経由にする
+  （スクリプトが自動でやる）
+- スライド `.md` を直接変換すると `---` が水平線になり体裁が崩れる。原稿用 `.md` を別途用意する
+
+### Claude Code での頼み方
+
+```
+slides/2026-09-18-vibe-coding.md を元に、寄稿記事風の解説文にして
+scripts/md2docx.sh で Word 原稿案を作って。図もスライドのものを使って。
+```
+
+---
+
 ## よくあるトラブル
 
 ### ページ番号が消えない
