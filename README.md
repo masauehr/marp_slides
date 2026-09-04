@@ -2,6 +2,7 @@
 
 > 詳しくは [MANUAL.md](MANUAL.md) を参照  
 > VS Code + Marp だけで使う場合は [VSCODE-MARP.md](VSCODE-MARP.md) を参照  
+> スライドではなく Word 文書（原稿・記事・報告書）が欲しい場合は [MD-TO-WORD.md](MD-TO-WORD.md) を参照  
 > 📌 **Claude Codeでの開発スタイルまとめ** → [slides/2026-08-19-claude-code-dev-style.md](slides/2026-08-19-claude-code-dev-style.md)
 
 Marp を使って Markdown ファイルから PPTX・PDF・HTML を生成するプロジェクト。  
@@ -14,7 +15,9 @@ Marp を使って Markdown ファイルから PPTX・PDF・HTML を生成する�
 ```
 marp_slides/
 ├── README.md                              # このファイル（概要・クイックスタート）
-├── MANUAL.md                              # 詳細マニュアル
+├── MANUAL.md                              # 詳細マニュアル（スライド変換）
+├── VSCODE-MARP.md                         # VS Code + Marp 拡張だけで変換する手順
+├── MD-TO-WORD.md                          # Markdown → Word(.docx) 変換の仕組みと原稿の書き方
 ├── themes/
 │   ├── ml-forecast.css                    # カスタムテーマ（パステルカラフル/デフォルト）
 │   ├── ml-forecast-multicolor.css         # 配色バリエーション（マルチカラー）
@@ -44,7 +47,7 @@ marp_slides/
 | VS Code + Marp 拡張のみ | CLI 不要・手軽に変換したい | [VSCODE-MARP.md](VSCODE-MARP.md) |
 | Marp CLI（npx） | ローカル画像を確実に埋め込みたい・自動化したい | [MANUAL.md](MANUAL.md) |
 | Claude Code と連携 | 構成・執筆・変換を一括自動化したい | [MANUAL.md](MANUAL.md) |
-| Markdown → Word（.docx） | スライドではなく原稿・記事・報告書を Word で欲しい | [MANUAL.md](MANUAL.md#markdown-から-worddocx-を生成する) |
+| Markdown → Word（.docx） | スライドではなく原稿・記事・報告書を Word で欲しい | [MD-TO-WORD.md](MD-TO-WORD.md) |
 
 ### Markdown から Word（.docx）を作る場合
 
@@ -55,7 +58,8 @@ scripts/md2docx.sh slides/2026-09-18-vibe-coding-article.md --pdf
 ```
 
 `.svg` 図の PNG 変換・日本語フォント適用・目次付けまで [`scripts/md2docx.sh`](scripts/md2docx.sh) が行う。
-詳細 → [MANUAL.md](MANUAL.md#markdown-から-worddocx-を生成する)
+仕組みの解説と原稿 Markdown の書き方 → [MD-TO-WORD.md](MD-TO-WORD.md)
+（コマンドのみのクイックリファレンスは [MANUAL.md](MANUAL.md#markdown-から-worddocx-を生成する)）
 
 ### VS Code + Marp 拡張だけで使う場合
 
@@ -283,3 +287,4 @@ VS Code 拡張版でも `.vscode/settings.json` の `markdown.marp.pptx.editable
 | 2026-08-01 | 「カスタムテーマ `ml-forecast.css`」セクションを「デザインパターン集」に刷新。配色テーマ3種（`ml-forecast`/`ml-forecast-multicolor`/`ml-forecast-vivid`）とヒーロー背景4種（`hero-gradient`/`hero-geo`/`hero-side`/`hero-diagonal`）を、`themes/samples/` に保存した実レンダリング画像つきで一覧化し、視覚的に選べるようにした |
 | 2026-08-19 | 「作成したスライド一覧」セクションを新設し、`slides/` 配下の全スライド`.md`へのリンクと内容・形式を一覧化。あわせて `slides/2026-08-19-claude-code-dev-style.md`（Claude Codeでの開発スタイルまとめ）を冒頭の案内ブロックと一覧内の「参考ドキュメント」に強調表示し、目立つようリンクを追加 |
 | 2026-09-04 | Markdown → Word（.docx）変換を追加。`scripts/md2docx.sh`（pandoc ベース、`.svg`→PNG 自動変換・日本語フォント適用・目次付け）と `templates/reference-ja.docx` を新設。`slides/2026-09-18-vibe-coding-article.md`（バイブコーディング実践記の寄稿記事風 原稿案）を作成し docx 化。詳細は MANUAL.md に「Markdown から Word（.docx）を生成する」を追記 |
+| 2026-09-04 | `MD-TO-WORD.md` を新規追加。md→Word 変換の内部の仕組み（SVG→PNG／reference-doc／目次フィールド／`--resource-path`）と、原稿用 Markdown の書き方・Marp との使い分け・トラブルシュートを独立ドキュメントとしてまとめ、README の冒頭・使い方パターンからリンク |

@@ -576,6 +576,9 @@ npx @marp-team/marp-cli slides/2026-06-ml-forecast.md \
 **pandoc** で Markdown → `.docx` に変換する。スライド用 `.md` とは別に、
 見出し（`#`）＋地の文＋図表で書いた「原稿用 `.md`」を用意するのが基本。
 
+> ここでは要点のみ。変換の内部の仕組み・原稿 Markdown の書き方・トラブルシュートは
+> [MD-TO-WORD.md](MD-TO-WORD.md) を参照。
+
 ### 前提ツール
 
 | ツール | 用途 | 導入 |
